@@ -7,6 +7,7 @@ echo <<<EOT
 <body>
     <header data-waypointsok="{$lang_waypointsok}">
 		<section>
+            <div class="tem_inner tem_top">
 <!--
 EOT;
 $h=$classnow==10001?'1':'2';
@@ -18,7 +19,6 @@ echo <<<EOT
 					<img src="{$met_logo}" alt="{$met_webname}" style="margin:{$lang_LogoTop}px 0px 0px {$lang_LogoLeft}px;" title="{$met_webname}" />
 				</a>
 			</h{$h}>
-            <div class="tem_inner tem_top">
                 <div class="tem_top_nav">
 <!--
 EOT;
