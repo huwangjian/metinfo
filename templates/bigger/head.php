@@ -7,11 +7,22 @@ echo <<<EOT
 <body>
     <header data-waypointsok="{$lang_waypointsok}">
 		<section>
-			<div class="tem_inner tem_top">
-				<h2>{$met_seo}</h2>
-				<div class="tem_top_nav">
 <!--
 EOT;
+$h=$classnow==10001?'1':'2';
+if($met_logo){
+echo <<<EOT
+-->
+			<h{$h}>
+				<a href="{$index_url}" title="{$met_webname}">
+					<img src="{$met_logo}" alt="{$met_webname}" style="margin:{$lang_LogoTop}px 0px 0px {$lang_LogoLeft}px;" title="{$met_webname}" />
+				</a>
+			</h{$h}>
+            <div class="tem_inner tem_top">
+                <div class="tem_top_nav">
+<!--
+EOT;
+}
 if(count($met_langok)>1&&$met_lang_mark){//当语言数量大于1
 echo <<<EOT
 -->
@@ -33,8 +44,8 @@ echo <<<EOT
 -->
 						</dd>
 					</dl>
-					
-					
+
+
 <!--
 EOT;
 }
@@ -47,19 +58,7 @@ echo <<<EOT
 		<div class="tem_inner tem_head">
 <!--
 EOT;
-$h=$classnow==10001?'1':'2';
 $navnow = $classnow==10001?'class="navdown"':'';
-if($met_logo){
-echo <<<EOT
--->
-			<h{$h}>
-				<a href="{$index_url}" title="{$met_webname}">
-					<img src="{$met_logo}" alt="{$met_webname}" style="margin:{$lang_LogoTop}px 0px 0px {$lang_LogoLeft}px;" title="{$met_webname}" />
-				</a>
-			</h{$h}>
-<!--
-EOT;
-}
 echo <<<EOT
 -->
 			<nav>
@@ -88,7 +87,7 @@ foreach($nav_list2[$val[id]] as $key=>$val2){
 if($val[module]==3&&$lang_nav_select_pai){
 $dtok = 0;
 echo <<<EOT
--->	
+-->
 			<div>
 				<h3><a href="{$val2[url]}" {$val2[new_windows]} title="{$val2[name]}">{$val2[name]}</a></h3>
 <!--
@@ -126,7 +125,9 @@ if($dtok&&$lang_nav_select_img){
 echo <<<EOT
 -->
 			<dt>
+                <a href="{$val[url]}" title="{$val[name]}">
 				<img src="{$val[columnimg]}" alt="{$val[name]}" />
+                </a>
 			</dt>
 <!--
 EOT;
@@ -175,7 +176,7 @@ EOT;
 }else{
 $methtml_flash=metlabel_flash();
 echo <<<EOT
--->	
+-->
 		{$methtml_flash}
 <!--
 EOT;

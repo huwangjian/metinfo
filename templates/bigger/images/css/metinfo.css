@@ -1,7 +1,7 @@
 @charset "utf-8";
 html,body{background:#fff;color:#333;font:14px/1.6 'Microsoft YaHei',Tahoma,Verdana,'Simsun';}
 a{color:#333;text-decoration:none;}
-a:hover{color:#e9280c;text-decoration:none;}
+a:hover{color:#0075c2;text-decoration:none;}
 .tem_inner,.met_section{position:relative;margin:0 auto;margin:0 auto;width:1000px;}
 @media(min-width:1000px){.tem_inner{padding:0;width:1000px;}
 }
@@ -10,10 +10,10 @@ a:hover{color:#e9280c;text-decoration:none;}
 @media(min-width:1800px){.tem_inner,.met_section{padding:0;width:70%;}
 }
 header.tem_headborder{border-bottom:1px solid #ddd;}
-header section{border-bottom:1px solid #e7e8ed;background:#f7f8fa;}
-.tem_top{position:relative;z-index:100;height:35px;color:#53555a;font-size:12px;line-height:35px;}
+header section{background:#f7f8fa;}
+.tem_top{position:relative;z-index:100;height:35px;color:#015db2;font-size:12px;line-height:35px;}
 .tem_top h2{font-weight:normal;}
-.tem_top a{color:#53555a;}
+.tem_top a{color:#015db2;}
 .tem_top a:hover{color:#e9280c;}
 .tem_top_nav{position:absolute;top:0;right:0;}
 .tem_top_nav ol{float:right;margin:0;padding:0;}
@@ -31,8 +31,8 @@ header h1{display:inline;}
 .tem_head nav ul{margin:0;padding:0;list-style:none;}
 .tem_head nav ul li{position:relative;float:left;margin-left:8px;}
 .tem_head nav a{display:block;padding:0 15px;}
-.tem_head nav a:hover{color:#e9280c;}
-.tem_head nav a.navdown{border-radius:2px;background:#e9280c;color:#fff;}
+.tem_head nav a:hover{color:#0075c2;}
+.tem_head nav a.navdown{border-radius:2px;background:#0075c2;color:#fff;}
 .tem_head nav a.navdown:hover{color:#fff;}
 .tem_head nav ul li dl{position:absolute;top:55px;left:0;z-index:99;display:none;width:500px;background:#f3f4f5;}
 .tem_head nav ul li dl dd{float:left;padding:20px 0;width:100px;}
@@ -59,7 +59,7 @@ header h1{display:inline;}
 .tem_index_title span{position:relative;top:2px;display:inline-block;padding:10px 15px;border-bottom:4px solid #666;}
 .tem_index_title p{color:#8c8c8c;font-weight:normal;}
 .tem_index_more{clear:both;margin:0 auto;padding-top:30px;width:200px;text-align:center;}
-.tem_index_more a{display:block;height:40px;background:#e9280c;color:#fff;font-weight:normal;font-size:14px;line-height:40px;}
+.tem_index_more a{display:block;height:40px;background:#0075c2;color:#fff;font-weight:normal;font-size:14px;line-height:40px;}
 .tem_index_more a:hover{background:#d82208;color:#fff;}
 .tem_index_to{border-top:1px solid #e7e8ed;border-bottom:1px solid #e7e8ed;background:#f7f8fa;}
 .tem_wp1,.tem_wp2,.tem_wp3,.tem_wp4,.tem_wp5{visibility:hidden;}
@@ -165,7 +165,7 @@ header h1{display:inline;}
 .met_section aside .met_aside dl dt{height:45px;line-height:45px;}
 .met_section aside .met_aside dl dt a{display:block;padding:0 20px;color:#333;}
 .met_section aside .met_aside dl dt a:hover{background:#efefef;}
-.met_section aside .met_aside dl dt.on{background:#efefef; border-left:4px solid #e9280c;}
+.met_section aside .met_aside dl dt.on{background:#efefef; border-left:4px solid #0075c2;}
 .met_section aside .met_aside dl dd{padding:6px 0 6px 0;}
 .met_section aside .met_aside dl dd a{display:block;padding-left:40px;height:35px;color:#333;font-weight:normal;line-height:35px;}
 .met_section aside .met_aside dl dd .on a,.met_aside dl dd a:hover{background:#efefef;}
@@ -179,7 +179,7 @@ header h1{display:inline;}
 .met_section_sehed{padding-top:0;}
 .met_section_head{height:50px;color:#aaa;font-size:12px;font-family:'宋体';line-height:50px;}
 .met_section_head a{color:#999;font-family:'Microsoft YaHei',Tahoma,Verdana,'Simsun';}
-.met_section_head a:hover{color:#e9280c;}
+.met_section_head a:hover{color:#0075c2;}
 
 
 /*以下CSS样式谨慎修改，内页各模块样式，多模板可共用*/
