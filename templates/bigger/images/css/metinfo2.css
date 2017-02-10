@@ -30,7 +30,7 @@ header h1{display:inline;}
 .tem_head nav{height:40px;line-height:40px;width:1100px;margin:0 auto;}
 .tem_head nav ul{margin:0;padding:0;list-style:none;}
 .tem_head nav ul li{position:relative;float:left;margin:0px 8px;}
-.tem_head nav a{display:block;padding:0px 15px;color:#fff;}
+.tem_head nav a{display:block;padding:0 15px;color:#fff;}
 .tem_head nav a:hover{background:#0075c2;}
 .tem_head nav a.navdown{border-radius:2px;background:#0075c2;color:#fff;}
 .tem_head nav a.navdown:hover{color:#fff;}
