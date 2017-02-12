@@ -35,6 +35,24 @@ echo <<<EOT
 				<p></p>
 			</span>
 		</h3>
+		<ol class="tem_index_news_tab">
+<!--
+EOT;
+$i=0;
+foreach($tem_news as $key=>$val){
+$i++;
+$now = $i==1?'class="flex-active"':'';
+echo <<<EOT
+-->
+			<li {$now}><h3>{$val[name]}</h3></li>
+<!--
+EOT;
+}
+echo <<<EOT
+-->
+		</ol>
+		<div class="tem_index_news_slides">
+		<div class="slides">
 <!--
 EOT;
 $i=0;
@@ -50,12 +68,13 @@ $i=0;
 foreach($val['list'] as $key=>$val2){
 $i++;
 $val2[imgurl]="{$thumb_src}dir=../{$val2[imgurl]}&x=90&y=90";
+$to = $i%2==0?'class="tem_even"':'';//判断是否为偶数
 echo <<<EOT
 -->
 			<li>
 
-				<dl>
-					<dt><a href="{$val2[url]}" title="{$val2[title]}" {$metblank}></a></dt>
+				<dl {$to}>
+					<dt><a href="{$val2[url]}" title="{$val2[title]}" {$metblank}><img src="{$val2['imgurl']}" /></a></dt>
 					<dd>
 						<div class="tem_index_news_list_txt">
 							<a href="{$val2[url]}" title="{$val2[title]}" {$metblank}>
@@ -73,12 +92,15 @@ EOT;
 }
 echo <<<EOT
 -->
+			<li class="tem_index_more"><a href="{$val[url]}" title="{$lang_news_more}" {$metblank}>{$lang_news_more}</a></li>
 		</ul>
 <!--
 EOT;
 }
 echo <<<EOT
 -->
+		</div>
+		</div>
 		<div class="met_clear"></div>
 	</div>
 </section>

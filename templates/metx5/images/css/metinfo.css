@@ -99,7 +99,7 @@ header h1{display:inline;}
 .tem_index_news_tab li.flex-active h3{background:#8c989f;color:#fff;}
 .tem_index_news_tab li:hover h3{background:#8c989f;color:#fff;}
 .tem_index_news_list{margin:20px 0 0;}
-.tem_index_news_list li{float:left;overflow:hidden;width:50%;list-style:none;text-align:left;}
+.tem_index_news_list li{float:left;overflow:hidden;width:100%;list-style:none;text-align:left;}
 .tem_index_news_list li a{display:block;}
 .tem_index_news_list li dl{margin-right:10px;padding-top:21px;height:115px;}
 .tem_index_news_list li dl.tem_even{margin-right:0;margin-left:10px;}
