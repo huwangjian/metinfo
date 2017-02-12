@@ -30,17 +30,17 @@ header h1{display:inline;}
 .tem_head nav{height:40px;line-height:40px;width:1100px;margin:0 auto;}
 .tem_head nav ul{margin:0;padding:0;list-style:none;}
 .tem_head nav ul li{position:relative;float:left;margin-left:8px;}
-.tem_head nav a{display:block;padding:0 15px;color:#fff;}
+.tem_head nav a{display:block;padding:0 25px;color:#fff;font-size:1.1em}
 .tem_head nav a:hover{background:#0075c2;}
 .tem_head nav a.navdown{border-radius:2px;background:#0075c2;color:#fff;}
 .tem_head nav a.navdown:hover{color:#fff;}
 .tem_head nav ul li dl{position:absolute;top:55px;left:0;z-index:99;display:none;width:422px;min-height:180px;background:#f3f4f5;white-space: nowrap;}
 .tem_head nav ul li dl dd{float:left;padding:20px 0;width:140px;}
-.tem_head nav ul li dl dd a{margin:0 10px;padding:10px 5px;text-align:center;line-height:1.5;color:#000;}
+.tem_head nav ul li dl dd a{margin:0 10px;padding:10px 5px;text-align:center;line-height:1.5;color:#000;font-size:1.0em}
 .tem_head nav ul li dl dd a:hover{color:#015db2;background:none !important;}
 .tem_head nav ul li dl dt{border-left:1px solid #ddd;float:right;overflow:hidden;padding:20px 10px 10px 10px;margin:20px 0px;width:260px;height:100%;font-size:0;}
 .tem_head nav ul li dl dt a:hover{background:none !important;}
-.tem_head nav ul li dl dt img{box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
+.tem_head nav ul li dl dt img{box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);}
 .tem_head nav ul li dl dt img:hover{opacity: .8;}
 .tem_head nav ul li dl dt img{width:220px;height:130px;align:middle;border:1px solid #021a40;background-repeat: no-repeat;background-size: contain;background-image: url('../../images/placeholder220.png');}
 .tem_head nav ul li dl dd i{position:absolute;top:-14px;left:50px;z-index:100;width:100%;color:#f3f4f5;font-size:22px;}
