@@ -1,6 +1,6 @@
 <?php
-# MetInfo Enterprise Content Management System 
-# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved. 
+# MetInfo Enterprise Content Management System
+# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved.
 //Head部分
 function metlabel_html5($closure=1,$iehack=1,$mobile=0){
 	global $met_title,$show,$m_now_year,$navurl,$met_js_access,$met_skin_css,$img_url,$met_webname,$metcms_v,$appscriptcss,$met_ch_lang,$lang,$met_ch_mark,$met_url,$metinfouiok,$classnow,$class_list,$met_headstat,$metinfover,$id;
@@ -36,8 +36,8 @@ function metlabel_html5($closure=1,$iehack=1,$mobile=0){
         $metinfo.="<link href=\"{$navurl}favicon.ico\" rel=\"shortcut icon\" type=\"image/x-icon\" />\n";
 		if($metinfouiok==1)$metinfo.="<link rel=\"stylesheet\" type=\"text/css\" href=\"{$navurl}public/ui/mobile/css/metinfo.css\" id=\"metuimodule\" data-module =\"{$class_list[$classnow][module]}\" />\n";
 	}else{
-		$metinfo.="<meta name=\"renderer\" content=\"webkit\">\n"; 
-        $metinfo.="<meta charset=\"utf-8\" />\n"; 
+		$metinfo.="<meta name=\"renderer\" content=\"webkit\">\n";
+        $metinfo.="<meta charset=\"utf-8\" />\n";
         $metinfo.="<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n";
 		$metinfo.=$mobileto;
 		$metinfo.="<title>".$met_title."</title>\n";
@@ -74,19 +74,19 @@ function metlabel_style($closure=1){
 		$metinfo.="body{\n";
 		$lang_fontfamily=str_replace("&quot;","\"",$lang_fontfamily);
 		if($lang_fontfamily<>'')$metinfo.=" font-family:".$lang_fontfamily.";\n";
-		if($lang_fontsize<>'')$metinfo.="	font-size:".$lang_fontsize.";\n"; 
+		if($lang_fontsize<>'')$metinfo.="	font-size:".$lang_fontsize.";\n";
 		if($lang_backgroundcolor<>'')$metinfo.="	background:".$lang_backgroundcolor."; \n";
 		if($lang_fontcolor<>'')$metinfo.="	color:".$lang_fontcolor.";\n";
 		$metinfo.="}\n";
 		if($lang_fontcolor<>'' or $lang_fontfamily<>''){
 		   $metinfo.="table td{";
-		   if($lang_fontfamily<>'')$metinfo.="font-family:".$lang_fontfamily.";"; 
+		   if($lang_fontfamily<>'')$metinfo.="font-family:".$lang_fontfamily.";";
 		   if($lang_fontcolor<>'')$metinfo.="color:".$lang_fontcolor.";";
 		   $metinfo.="}\n";
 		}
 		if($lang_fontcolor<>'' or $lang_fontfamily<>''){
 		   $metinfo.="table th{";
-		   if($lang_fontfamily<>'')$metinfo.="font-family:".$lang_fontfamily.";"; 
+		   if($lang_fontfamily<>'')$metinfo.="font-family:".$lang_fontfamily.";";
 		   if($lang_fontcolor<>'')$metinfo.="color:".$lang_fontcolor.";";
 		   $metinfo.="}\n";
 		}
@@ -115,7 +115,7 @@ function metlabel_flash(){
 			<li>
 				<a href='".$val[img_link]."' target='_blank' title='{$val[img_title]}' class='b6' style='background-image:url(".$val[img_path].");  height:".$met_flasharray[$classnow][y]."px;'></a>";
 						$metinfo.="
-			</li>"; 
+			</li>";
 					}
 					$metinfo.="
 		</ul>";
@@ -138,7 +138,7 @@ function metlabel_flash(){
 							    <a href='".$val[img_link]."' target='_blank' title='{$val[img_title]}' class='b8' style='background-image:url({$val[img_path]}); height:{$met_flasharray[$classnow][y]}px; '></a>";
 						$metinfo.="
 							</li>
-						"; 
+						";
 					}
 					$metinfo.="
 						  </ul>
@@ -151,7 +151,7 @@ function metlabel_flash(){
 			break;
 		}
 		}else{
-		
+
 		switch($met_flasharray[$classnow][imgtype]){
 			case 6:
 					$metinfo.="\n<link href='{$navurl}public/banner/banner6/css.css' rel='stylesheet' type='text/css' />\n";
@@ -161,7 +161,7 @@ function metlabel_flash(){
 					foreach($met_flashimg as $key=>$val){
 						$val[img_link]=str_replace('%26','&',$val[img_link]);
 						$metinfo.="<li><a href='".$val[img_link]."' target='_blank' title='{$val[img_title]}'>\n";
-						$metinfo.="<img src='".$val[img_path]."' alt='".$val[img_title]."' width='{$met_flasharray[$classnow][x]}' height='{$met_flasharray[$classnow][y]}'></a></li>\n"; 
+						$metinfo.="<img src='".$val[img_path]."' alt='".$val[img_title]."' width='{$met_flasharray[$classnow][x]}' height='{$met_flasharray[$classnow][y]}'></a></li>\n";
 					}
 					$metinfo.="</ul>\n";
 					$metinfo.="</div>\n";
@@ -176,7 +176,7 @@ function metlabel_flash(){
 					foreach($met_flashimg as $key=>$val){
 						$val[img_link]=str_replace('%26','&',$val[img_link]);
 						$metinfo.="<li><a href='".$val[img_link]."' target='_blank' title='{$val[img_title]}'>\n";
-						$metinfo.="<img src='".$val[img_path]."' alt='".$val[img_title]."' width='{$met_flasharray[$classnow][x]}' height='{$met_flasharray[$classnow][y]}'></a></li>\n"; 
+						$metinfo.="<img src='".$val[img_path]."' alt='".$val[img_title]."' width='{$met_flasharray[$classnow][x]}' height='{$met_flasharray[$classnow][y]}'></a></li>\n";
 					}
 					$metinfo.="</ul></div></div>";
 					$metinfo.="<script type='text/javascript'>$(document).ready(function(){ $('.flashfld').flexslider({ animation: 'slide',controlNav:false});});</script>";
@@ -185,7 +185,7 @@ function metlabel_flash(){
 				if(!$hd)$metinfo=$methtml_flash;
 			break;
 		}
-		
+
 		}
 		}else{
 			$metinfo=$methtml_flash;
@@ -211,7 +211,7 @@ function metlabel_foot(){
 //顶部导航函数
 function metlabel_nav($type=1,$label='',$z,$l,$home=1){
 	global $index_url,$lang_home,$nav_list,$nav_list2,$nav_list3,$navdown,$lang,$db,$met_column,$lang_cvtitle,$index,$class_list,$cv,$metinfover;
-	
+
 	if($recruitment=$db->get_one("SELECT * FROM $met_column WHERE bigclass='0' and module='6' and lang='$lang'")){
 		if(!$nav_list2[$recruitment[id]][0][url]){
 			$nav_list2[$recruitment[id]][0][id]=$recruitment[id];
@@ -225,7 +225,7 @@ function metlabel_nav($type=1,$label='',$z,$l,$home=1){
 
 if($metinfover == 'v1'){
 	//v1[begin]
-	
+
 	if($z){
 		$navV1 = "class='metNav list-none'";
 		if($home){$navnum=count($nav_list)+1;}else{$navnum=count($nav_list);}
@@ -235,10 +235,10 @@ if($metinfover == 'v1'){
 	if(!$in && $label!=""){
 			$label = "<li class='line'>".$label."</li>";
 	}
-	
+
 	$cdown=$navdown==10001?"navdown":'';
 	$metinfo ="<ul {$navV1} {$navData}>
-	
+
 			    ";
 	switch($type){
 		case 1:
@@ -331,10 +331,10 @@ if($metinfover == 'v1'){
 	$metinfo .="
 			</ul>";
 
-	//v1[over]  
-	
+	//v1[over]
+
 }else{
-	
+
 	if($z){
 		$navnum=count($nav_list)+1;
 		$width=($z/$navnum)-$l+($l/$navnum);
@@ -441,7 +441,7 @@ if($metinfover == 'v1'){
 	}
 
 }
-	
+
 	return $metinfo;
 }
 function metlable_lang($dt,$tp=1,$lok=1){
@@ -487,10 +487,10 @@ function metlabel_navnow($type=1,$label='',$indexnum,$listyy=0,$listmax=8,$msow=
 		$mod=$class_list[$class1]['module']==100?3:5;
 		$type=3;
 	}
-	
+
 	$module=metmodname($mod);
 	$cdown=$sidedwon2==10001?"class='on'":'';
-	
+
 	switch($type){
 		case 1:
 			$metinfo ='<ul class="list-none navnow">';
@@ -514,14 +514,14 @@ function metlabel_navnow($type=1,$label='',$indexnum,$listyy=0,$listmax=8,$msow=
 					if(strstr($val[url],"job/cv.php")){
 						$cdown_id=$val[id];
 					}
-					
+
 				}
 			}
 			foreach($nav_list2[$class] as $key=>$val){
 				if($val[display]==1){
 					continue;
 				}
-				
+
 				$cdown=$val['id']==$sidedwon2?"class='on'":'';
 				if($cdown_id==$val[id]){
 					$cdown="class='on'";
@@ -557,7 +557,7 @@ function metlabel_navnow($type=1,$label='',$indexnum,$listyy=0,$listmax=8,$msow=
 							$i=0;
 							foreach($classlistall[$module][$val2['id']] as $key=>$val3){
 								$i++;
-								$metinfo.="<a href='{$val3[url]}' target='_blank' title='{$val3[title]}'><span>{$val3[title]}</span></a>";	
+								$metinfo.="<a href='{$val3[url]}' target='_blank' title='{$val3[title]}'><span>{$val3[title]}</span></a>";
 								if($i>=$listmax)break;
 							}
 							$metinfo.="</p>";
@@ -571,7 +571,7 @@ function metlabel_navnow($type=1,$label='',$indexnum,$listyy=0,$listmax=8,$msow=
 					$i=0;
 					foreach($classlistall[$module][$val['id']] as $key=>$val3){
 						$i++;
-						$metinfo.="<a href='{$val3[url]}' target='_blank' title='{$val3[title]}'><span>{$val3[title]}</span></a>";	
+						$metinfo.="<a href='{$val3[url]}' target='_blank' title='{$val3[title]}'><span>{$val3[title]}</span></a>";
 						if($i>=$listmax)break;
 					}
 					$metinfo.="</p>";
@@ -579,7 +579,7 @@ function metlabel_navnow($type=1,$label='',$indexnum,$listyy=0,$listmax=8,$msow=
 				}
 				$metinfo.="</dl>";
 			}
-			
+
 			return $metinfo;
 			break;
 		case 3:
@@ -593,7 +593,7 @@ function metlabel_navnow($type=1,$label='',$indexnum,$listyy=0,$listmax=8,$msow=
 						if(strstr($val[url],"job/cv.php")){
 							$cdown_id=$val[id];
 						}
-						
+
 					}
 				}
 				foreach($nav_list2[$class] as $key=>$val){
@@ -626,7 +626,7 @@ function metlabel_navnow($type=1,$label='',$indexnum,$listyy=0,$listmax=8,$msow=
 								$i=0;
 								foreach($classlistall[$module][$val2['id']] as $key=>$val3){
 									$i++;
-									$metinfo.="<a href='{$val3[url]}' target='_blank' title='{$val3[title]}'><span>{$val3[title]}</span></a>";	
+									$metinfo.="<a href='{$val3[url]}' target='_blank' title='{$val3[title]}'><span>{$val3[title]}</span></a>";
 									if($i>=$listmax)break;
 								}
 								$metinfo.="</p>";
@@ -644,7 +644,7 @@ function metlabel_navnow($type=1,$label='',$indexnum,$listyy=0,$listmax=8,$msow=
 						}
 						foreach($classlistall[$module][$val['id']] as $key=>$val3){
 							$i++;
-							$metinfo.="<a href='{$val3[url]}' target='_blank' title='{$val3[title]}'><span>{$val3[title]}</span></a>";	
+							$metinfo.="<a href='{$val3[url]}' target='_blank' title='{$val3[title]}'><span>{$val3[title]}</span></a>";
 							if($i>=$listmax)break;
 						}
 						$metinfo.="</p>";
@@ -653,7 +653,7 @@ function metlabel_navnow($type=1,$label='',$indexnum,$listyy=0,$listmax=8,$msow=
 					$metinfo.="</dl>";
 				}
 			}
-			
+
 			return $metinfo;
 			break;
 	}
@@ -680,7 +680,7 @@ function metlabel_list($listtype='text',$mark,$type,$order,$module,$time=0,$titl
 		}
 	}
 	$listarray=methtml_getarray($mark,$type,$order,$module,$listmx,'','',$marktype,$txtmax);
-	
+
 	switch($listtype){
 		case 'img':
 			$metinfo.="<ol class='list-none metlist'>";
@@ -728,9 +728,9 @@ function membernavlist($type=0){
 		$metinfo.="<dl class='$class'>";
 		$metinfo.="<dt><a href='../member/basic.php?lang={$lang}' title='{$lang_memberIndex3}'>{$lang_memberIndex3}</a></dt>";
 		if($admin_list[usertype]==3){
-				
+
 		}else{
-			$metinfo.="<dt><a href='../member/basic.php?lang={$lang}&a=dosafety' title='{$lang_memberIndex4}'>{$lang_memberIndex4}</a></dt>";	
+			$metinfo.="<dt><a href='../member/basic.php?lang={$lang}&a=dosafety' title='{$lang_memberIndex4}'>{$lang_memberIndex4}</a></dt>";
 		}
 		foreach($navigation as $key=>$val){
 			if($val[columnid]){
@@ -805,7 +805,7 @@ function metlabel_news($time=1,$desc=0,$dlen,$dt=1,$n=0){
 					$metinfo.="
 						</div>
 						<div class='clear'></div>
-					</li>";	
+					</li>";
 				}
 			}
 		}else{
@@ -819,7 +819,7 @@ function metlabel_news($time=1,$desc=0,$dlen,$dt=1,$n=0){
 					if($time)$metinfo.="<span>{$a}{$val[updatetime]}{$b}</span>";
 					$metinfo.="<a href='{$val[url]}' title='{$val[title]}' {$metblank}>{$val[title]}</a>{$val[hot]}{$val[news]}{$val[top]}";
 					if($desc&&$val['description']!='')$metinfo.="<p>{$val[description]}</p>";
-					$metinfo.="</li>";	
+					$metinfo.="</li>";
 				}
 			}
 		}
@@ -835,7 +835,7 @@ function metlabel_news($time=1,$desc=0,$dlen,$dt=1,$n=0){
 				if($time)$metinfo.="<span>{$a}{$val[updatetime]}{$b}</span>";
 				$metinfo.="<a href='{$val[url]}' title='{$val[title]}' {$metblank}>{$val[title]}</a>{$val[hot]}{$val[news]}{$val[top]}";
 				if($desc&&$val['description']!='')$metinfo.="<p>{$val[description]}</p>";
-				$metinfo.="</li>";	
+				$metinfo.="</li>";
 			}
 		}
 	}
@@ -848,17 +848,17 @@ function metlabel_news($time=1,$desc=0,$dlen,$dt=1,$n=0){
 //产品模块列表函数
 function metlabel_product($z,$w,$l,$n=0){
 	global $product_list,$metblank,$met_img_style,$met_img_x,$met_img_y,$met_product_page,$class1,$class2,$class3,$search,$nav_list2,$nav_list3,$weburly,$id,$met_agents_img,$class_list,$module_listall,$db,$lang,$met_parameter,$met_plist,$prices,$action,$product_para,$metinfover,$thumb_src;
-	
+
 	foreach($product_para as $key=>$val){
 		$inquiry="inquiry_".$val[id];
 		global $$inquiry;
 	}
-		
+
 	$met_img_x=$met_img_style?met_imgxy(1,'product'):$met_img_x;
 	$met_img_y=$met_img_style?met_imgxy(2,'product'):$met_img_y;
-	
+
 	if($metinfover=="v1"){
-	
+
 	$listarray=$product_list;
 	$metok=0;
 	if($met_product_page && $search<>'search'){
@@ -886,7 +886,7 @@ function metlabel_product($z,$w,$l,$n=0){
 	if($lists<$l){$z=ceil($z-($z/$l)*($l-$lists));}
 	$styw=$z?"style='width:".$z."px;' data-ie67='".$w."|".$l."'":"";
 	$metinfo.="<ul class='list-none metlist' {$styw}>";
-	
+
 	$i=0;$xb=$l-1;$tr=1;
 	foreach($listarray as $key=>$val){
 		if(!($key%$l)){
@@ -906,7 +906,7 @@ function metlabel_product($z,$w,$l,$n=0){
 
 			$i++;
 			if($i==$l)$i=0;
-			if($key==$xb){	
+			if($key==$xb){
 				$tr++;
 				$xb=$tr*$l-1;
 				$metinfo.="
@@ -920,9 +920,9 @@ function metlabel_product($z,$w,$l,$n=0){
 	}
 $metinfo.="
 			</ul>";
-			
+
 	}else{
-	
+
 	$metinfo.="<ul class='list-none metlist'>";
 	$listarray=$product_list;
 	$metok=0;
@@ -945,7 +945,7 @@ $metinfo.="
 			$metok=1;
 		}
 	}
-	
+
 	if($z){
 		$l=$l?$l:floor($z/$w);
 		$margin=(($z/$l)-$w)/2;
@@ -985,9 +985,9 @@ $metinfo.="
 		}
 	}
 	$metinfo.="</ul>";
-	
+
 	}
-			
+
 	return $metinfo;
 }
 //图片模块列表函数
@@ -995,7 +995,7 @@ function metlabel_img($z,$w,$l,$n=0){
 	global $img_list,$metblank,$met_img_style,$met_img_x,$met_img_y,$met_img_page,$class1,$class2,$class3,$search,$nav_list2,$nav_list3,$weburly,$id,$class_list,$module_listall,$metinfover,$thumb_src;
 	$met_img_x=$met_img_style?met_imgxy(1,'img'):$met_img_x;
 	$met_img_y=$met_img_style?met_imgxy(2,'img'):$met_img_y;
-	
+
 	if($metinfover=="v1"){
 
 	$listarray=$img_list;
@@ -1025,7 +1025,7 @@ function metlabel_img($z,$w,$l,$n=0){
 	if($lists<$l){$z=ceil($z-($z/$l)*($l-$lists));}
 	$styw=$z?"style='width:".$z."px;' data-ie67='".$w."|".$l."'":"";
 	$metinfo.="<ul class='list-none metlist' {$styw}>";
-	
+
 	$i=0;$xb=$l-1;$tr=1;
 	foreach($listarray as $key=>$val){
 		if(!($key%$l)){
@@ -1042,10 +1042,10 @@ function metlabel_img($z,$w,$l,$n=0){
 				        <img src='{$thumb_src}dir={$val[imgurl]}&x={$met_img_x}&y={$met_img_y}' alt='{$val[title]}' title='{$val[title]}' />
 				        <h3>{$val[title]}</h3>
 			        </a>";
-					
+
 			$i++;
 			if($i==$l)$i=0;
-			if($key==$xb){	
+			if($key==$xb){
 				$tr++;
 				$xb=$tr*$l-1;
 				$metinfo.="
@@ -1059,20 +1059,20 @@ function metlabel_img($z,$w,$l,$n=0){
 	}
 	$metinfo.="
 			</ul>";
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
 	}else{
-	
+
 	$metinfo.="<ul class='list-none metlist'>";
 	$listarray=$img_list;
 	$metok=0;
@@ -1134,9 +1134,9 @@ function metlabel_img($z,$w,$l,$n=0){
 		}
 	}
 	$metinfo.="</ul>";
-	
+
 	}
-	
+
 	return $metinfo;
 }
 //下载模块列表函数
@@ -1225,8 +1225,8 @@ function messagelabel_table($dy){
 			}
 		}
 	}
-	
-	$query = "SELECT * FROM $met_parameter where lang='$lang' and  module=7 order by no_order";	
+
+	$query = "SELECT * FROM $met_parameter where lang='$lang' and  module=7 order by no_order";
 	$result = $db->query($query);
 	while($list= $db->fetch_array($result)){
 		if($list[type]==2 or $list[type]==4 or $list[type]==6){
@@ -1292,7 +1292,7 @@ function messagelabel_table($dy){
 		$fd_para[]=$list;
 		if($list[wr_ok])$fdwr_list[]=$list;
 	}
-	
+
 		$fdjs="<script language='javascript'>";
 		$fdjs=$fdjs."function metmessagesubmit1(){ ";
 		foreach($fdwr_list as $key=>$val){
@@ -1316,7 +1316,7 @@ function messagelabel_table($dy){
 		}
 		$fdjs=$fdjs."}";
 		$fdjs=$fdjs."function verification(){ ";
-		$fdjs=$fdjs."document.getElementById('new_code').click();}\n";	
+		$fdjs=$fdjs."document.getElementById('new_code').click();}\n";
 		$fdjs=$fdjs."</script>";
 		$lujin='';
 		if($dy)$lujin=$navurl.'message/';
@@ -1399,7 +1399,7 @@ function messagelabel_table($dy){
 			$metinfo.="</table>\n";
 			$metinfo.="</form>\n";
 		}
-	
+
 	return $metinfo;
 }
 
@@ -1461,7 +1461,7 @@ function metlabel_feedback($fid,$mobile){
 	   $paravalue[$list[id]][]=$list1;
 	   }
 	   }}
-	 } 
+	 }
 	if($list[wr_ok]=='1')$list[wr_must]="*";
 	switch($list[type]){
 	case 1:
@@ -1525,7 +1525,7 @@ function metlabel_feedback($fid,$mobile){
 	}
 	$fdjs=$fdjs."}";
 	$fdjs=$fdjs."function verification(){ ";
-	$fdjs=$fdjs."document.getElementById('new_code').click();}\n";	
+	$fdjs=$fdjs."document.getElementById('new_code').click();}\n";
 	$fdjs=$fdjs."</script>";
 	$lujin='';
 	if($fid)$lujin=$navurl.'feedback/';
@@ -1592,7 +1592,7 @@ function metlabel_feedback($fid,$mobile){
      $metinfo.="<td class='input'>".$val[input]."<span class='info'>{$val[wr_must]}</span><span>{$val[description]}</span></td>\n";
      $metinfo.="</tr>\n";
     }
-if($met_memberlogin_code==1){  
+if($met_memberlogin_code==1){
      $metinfo.="<tr><td class='text'>".$lang_memberImgCode."</td>\n";
      $metinfo.="<td class='input'><input name='code' onKeyUp='pressCaptcha(this)' type='text' class='code' id='code' size='6' maxlength='8' style='width:50px' >";
      $metinfo.="<img align='absbottom' id='new_code' src='{$navurl}member/ajax.php?action=code'  onclick=this.src='{$navurl}member/ajax.php?action=code&'+Math.random() style='cursor: pointer;' title='".$lang_memberTip1."'/>";
@@ -1614,7 +1614,7 @@ if($met_memberlogin_code==1){
 	return $metinfo;
 }
 //会员提交表单函数
-function metlabel_member($fid,$mobile){ 
+function metlabel_member($fid,$mobile){
 	global $lang,$message_list,$lang_Submit,$lang_Reset,$lang_Publish,$lang_Reply,$fromurl,$m_user_ip,$id,$title;
 	global $met_memberlogin_code,$lang_memberImgCode,$lang_memberTip1,$met_adminfile,$navurl,$settings_arr;
 	global $db,$lang_memberRegisterName,$lang_js7,$lang_js26,$lang_memberPassword,$lang_js8,$lang_js9,$lang_js10,$lang_js12,$lang_js11,$lang_js13,$lang_memberName,$lang_membereditorPs,$lang_membereditorPs1,$lang_Email,$lang_memberbasicCompanyName,$met_parameter,$met_admin_array,$met_member_use,$metinfo_member_type,$met_list,$met_class,$class_list,$met_product,$lang_Choice,$lang_Empty,$lang_memberRegister,$paravalue;
@@ -1694,16 +1694,16 @@ function metlabel_member($fid,$mobile){
 	}
 	$fdjs="<script language='javascript'>";
 	$fdjs=$fdjs."function Checkmember(){ ";
-    $fdjs.="if(trim(document.myform.yhid.value) == '') 
+    $fdjs.="if(trim(document.myform.yhid.value) == '')
          { alert('{$lang_memberRegisterName}');
 		   document.myform.yhid.focus();
-		   document.myform.yhid.select(); 
+		   document.myform.yhid.select();
            return false;
          }
-	   if(trim(document.myform.yhid.value).length<3) 
+	   if(trim(document.myform.yhid.value).length<3)
          { alert('{$lang_js7}');
 		   document.myform.yhid.focus();
-		   document.myform.yhid.select(); 
+		   document.myform.yhid.select();
            return false;
          }
 
@@ -1711,43 +1711,43 @@ function metlabel_member($fid,$mobile){
 	   {	alert('{$lang_js26}');
 			document.myform.yhid.focus();
 			document.myform.yhid.select();
-			return false; 
+			return false;
 	   }
-		 
+
         else if(trim(document.myform.mm.value)=='')
          { alert('{$lang_memberPassword}');
            document.myform.mm.focus();
-		   document.myform.mm.select(); 
+		   document.myform.mm.select();
 		   return false;
          }
 		  else if ((document.myform.mm.value).length<6)
           {alert('{$lang_js8}');
 		   document.myform.mm.focus();
-		   document.myform.mm.select(); 
+		   document.myform.mm.select();
            return false;
           }
 		 else if(trim(document.myform.mm1.value)=='')
          { alert('{$lang_js9}');
            document.myform.mm.focus();
-		   document.myform.mm.select(); 
+		   document.myform.mm.select();
 		   return false;
          }
 		 else if(document.myform.mm1.value!=document.myform.mm.value)
          { alert('{$lang_js10}');
            document.myform.mm.focus();
-		   document.myform.mm.select(); 
+		   document.myform.mm.select();
 		   return false;
          }
 	   else if(trim(document.myform.email.value)=='')
          { alert('{$lang_js12}');
            document.myform.email.focus();
-		   document.myform.email.select(); 
+		   document.myform.email.select();
 		   return false;
          }
 	  else if(!isValidEmail(document.myform.email.value))
          { alert('{$lang_js13}');
            document.myform.email.focus();
-		   document.myform.email.select(); 
+		   document.myform.email.select();
 		   return false;
          }";
 	foreach($fdwr_list as $key=>$val){
@@ -1770,7 +1770,7 @@ function metlabel_member($fid,$mobile){
 	}
 	$fdjs=$fdjs."}";
 	$fdjs=$fdjs."function verification(){ ";
-	$fdjs=$fdjs."document.getElementById('new_code').click();}\n";	
+	$fdjs=$fdjs."document.getElementById('new_code').click();}\n";
 	$fdjs=$fdjs."</script>";
 	$lujin='';
 	if($fid)$lujin=$navurl.'member/';
@@ -1851,7 +1851,7 @@ function metlabel_member($fid,$mobile){
      $metinfo.="<td class='zhuce_input'>".$val[input]."<span>{$val[description]}</span></td>\n";
      $metinfo.="</tr>\n";
     }
-if($met_memberlogin_code==1){  
+if($met_memberlogin_code==1){
      $metinfo.="<tr><td class='zhuce_text'><span class='reqd'>*</span>".$lang_memberImgCode."</td>\n";
      $metinfo.="<td class='zhuce_input'><input name='code' onKeyUp='pressCaptcha(this)' type='text' class='input_text' id='code' size='6' maxlength='8' style='width:50px' onclick=verification() >";
      $metinfo.="<img align='absbottom' id='new_code' src='{$navurl}member/ajax.php?action=code'  onclick=this.src='{$navurl}member/ajax.php?action=code&'+Math.random() style='cursor: pointer;' title='".$lang_memberTip1."'/>";
@@ -1976,7 +1976,7 @@ function metlabel_message($fid,$mobile){
 	$fdjs=$fdjs."}";
 	$fdjs=$fdjs."function verification(){ ";
 	$fdjs=$fdjs."document.getElementById('new_code').click();}\n";
-	
+
 	$fdjs=$fdjs."</script>";
 	$lujin='';
 	if($fid)$lujin=$navurl.'message/';
@@ -2043,7 +2043,7 @@ function metlabel_message($fid,$mobile){
      $metinfo.="<td class='input'>".$val[input]."<span class='info'>{$val[wr_must]}</span><span>{$val[description]}</span></td>\n";
      $metinfo.="</tr>\n";
     }
-if($met_memberlogin_code==1){  
+if($met_memberlogin_code==1){
      $metinfo.="<tr><td class='text'>".$lang_memberImgCode."</td>\n";
      $metinfo.="<td class='input'><input type='text' name='code' onKeyUp='pressCaptcha(this)' class='code' id='code' size='6' maxlength='8' style='width:50px' value='' onclick=verification() > ";
      $metinfo.="<img align='absbottom' id='new_code' src='{$navurl}member/ajax.php?action=code'  onclick=this.src='{$navurl}member/ajax.php?action=code&'+Math.random() style='cursor: pointer;' title='".$lang_memberTip1."'/>";
@@ -2068,7 +2068,7 @@ if($met_memberlogin_code==1){
 function metlabel_messageold($fid,$mobile){
 	global $lang,$message_list,$lang_Submit,$lang_Reset,$lang_Publish,$lang_Reply,$fromurl,$m_user_ip,$id,$title,$lang_SubmitInfo,$paravalue;
 	global $met_memberlogin_code,$lang_memberImgCode,$lang_memberTip1,$met_adminfile,$navurl,$settings_arr;
-	global $db,$met_parameter,$met_admin_array,$met_member_use,$metinfo_member_type,$met_list,$met_class,$class_list,$met_product,$lang_Choice,$lang_Empty;		
+	global $db,$met_parameter,$met_admin_array,$met_member_use,$metinfo_member_type,$met_list,$met_class,$class_list,$met_product,$lang_Choice,$lang_Empty;
 	if($fid)$id=$fid;
 	if(!$title){
 		foreach($settings_arr as $key=>$val){
@@ -2166,7 +2166,7 @@ function metlabel_messageold($fid,$mobile){
 	}
 	$fdjs=$fdjs."}";
 	$fdjs=$fdjs."function verification(){ ";
-	$fdjs=$fdjs."document.getElementById('new_code').click();}\n";	
+	$fdjs=$fdjs."document.getElementById('new_code').click();}\n";
 	$fdjs=$fdjs."</script>";
 	$lujin='';
 	if($fid)$lujin=$navurl.'message/';
@@ -2248,7 +2248,7 @@ function metlabel_messageold($fid,$mobile){
 	$metinfo.="<input type='submit' name='Submit' value='".$lang_SubmitInfo."' class='tj'>\n";
 	$metinfo.="<input type='reset' name='Submit' value='".$lang_Reset."' class='tj'></td></tr>\n";
 	$metinfo.="</table>\n";
-	$metinfo.="</form>\n";	 
+	$metinfo.="</form>\n";
 	}
 	return $metinfo;
 }
@@ -2261,7 +2261,7 @@ function metlabel_addlink($tt=1){
 	}
 	$metinfo.="<script language='javascript'>";
 	$metinfo.="function verification(){ ";
-	$metinfo.="document.getElementById('new_code').click();}\n";	
+	$metinfo.="document.getElementById('new_code').click();}\n";
 	$metinfo.="</script>";
 	$metinfo.="<form method='POST' name='myform' onSubmit='return addlinksubmit(\"{$lang_LinkInfo2}\",\"{$lang_LinkInfo3}\");' action='addlink.php?action=add' target='_self'>\n";
 	$metinfo.="<table class='addlink_table'>\n";
@@ -2286,7 +2286,7 @@ function metlabel_addlink($tt=1){
 	$metinfo.="<td class='input'><input name='info' type='text' class='input-text' size='30' /></td></tr>\n";
 	$metinfo.="<tr><td class='text'>{$lang_Contact}</td>\n";
 	$metinfo.="<td class='input'><textarea name='contact' cols='50' class='textarea-text' rows='6'></textarea></td></tr>\n";
-if($met_memberlogin_code==1){  
+if($met_memberlogin_code==1){
      $metinfo.="<tr><td class='text'>".$lang_memberImgCode."</td>\n";
      $metinfo.="<td class='input'><input name='code' onKeyUp='pressCaptcha(this)' type='text' class='code' id='code' size='6' maxlength='8' style='width:50px' onclick=verification()>";
      $metinfo.="<img align='absbottom' id='new_code' src='../member/ajax.php?action=code'  onclick=this.src='../member/ajax.php?action=code&'+Math.random() style='cursor: pointer;' title='".$lang_memberTip1."'/>";
@@ -2410,16 +2410,16 @@ function metlabel_cv($mobile=0){
 	 break;
     }
    }
-if($met_memberlogin_code==1){  
+if($met_memberlogin_code==1){
      $metinfo.="<tr><td class='text'>".$lang_memberImgCode."</td>\n";
      $metinfo.="<td class='input'><input name='code' onKeyUp='pressCaptcha(this)' type='text' class='code' id='code' size='6' maxlength='8' style='width:50px' onclick=verification() >";
      $metinfo.="<img align='absbottom' id='new_code' src='../member/ajax.php?action=code'  onclick=this.src='../member/ajax.php?action=code&'+Math.random() style='cursor: pointer;' title='".$lang_memberTip1."'/>";
      $metinfo.="</td>\n";
      $metinfo.="</tr>\n";
-}	  
+}
      $metinfo.="<tr><td class='text'></td>\n";
      $metinfo.="<td class='submint'><input type='submit' name='Submit' value='".$lang_Submit."' class='submit button orange' /></td>\n";
-     $metinfo.="</tr>";		
+     $metinfo.="</tr>";
      $metinfo.="</table>";
      $metinfo.="</form>";
 	}
@@ -2429,28 +2429,28 @@ if($met_memberlogin_code==1){
 function sitemaplist(){
 	global $db,$nav_listall,$m_now_date,$met_sitemap_not1,$met_sitemap_not2,$lang,$met_langok,$met_index_url,$met_webname,$met_weburl;
 	global $met_config,$langmark,$class_list,$met_index_type,$met_pseudo,$met_webhtm,$met_htmtype,$met_htmpagename,$met_listhtmltype,$met_htmlistname,$met_chtmtype,$metadmin;
-	
+
 	$met_webname=$db->get_one("select * from $met_config where name='met_webname' and lang='$lang'");
 	$met_webname=$met_webname[value];
-	
+
 	$met_weburl=$db->get_one("select * from $met_config where name='met_weburl' and lang='$lang'");
 	$met_weburl=$met_weburl[value];
-	
+
 	$met_pseudo=$db->get_one("select * from $met_config where name='met_pseudo' and lang='$lang'");
 	$met_pseudo=$met_pseudo[value];
-	
+
 	$met_webhtm=$db->get_one("select * from $met_config where name='met_webhtm' and lang='$lang'");
 	$met_webhtm=$met_webhtm[value];
-	
+
 	$met_htmtype=$db->get_one("select * from $met_config where name='met_htmtype' and lang='$lang'");
 	$met_htmtype=$met_htmtype[value];
-	
+
 	$met_htmpagename=$db->get_one("select * from $met_config where name='met_htmpagename' and lang='$lang'");
 	$met_htmpagename=$met_htmpagename[value];
-	
+
 	$met_listhtmltype=$db->get_one("select * from $met_config where name='met_listhtmltype' and lang='$lang'");
 	$met_listhtmltype=$met_listhtmltype[value];
-	
+
 	$met_htmlistname=$db->get_one("select * from $met_config where name='met_htmlistname' and lang='$lang'");
 	$met_htmlistname=$met_htmlistname[value];
 	if($met_index_type==$lang){

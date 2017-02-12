@@ -153,11 +153,14 @@ header h1{display:inline;}
 .tem_index_footer_attention li:hover a{background:url(../pnthover.png) no-repeat;}
 .tem_index_footer_attention img{margin-top:8px;width:100px;}
 .tem_index_footer_attention p{margin-top:5px;}
-.tem_footer{position:relative;padding:30px 0;background:#161616;color:#4a4a4a;font-size:12px;}
-.tem_footer a{color:#4a4a4a;}
-.tem_footer_nav{position:absolute;top:50%;right:0;margin-top:-15px;height:30px;line-height:30px;}
+.tem_footer{position:relative;padding:30px 0;background:#2e2e2e;color:#b4b4b4;font-size:12px;}
+.tem_footer a{color:#b4b4b4;}
+.tem_footer_left{display:block;margin:auto;position: absolute;}
+.tem_footer_right{display:block;margin:auto;text-align:center;}
+.tem_footer_nav{top:50%;margin-top:-15px;height:30px;line-height:30px;}
 .tem_footer_nav a{margin-left:30px;}
-.powered_by_metinfo{height:35px;background:#161616;color:#4a4a4a;text-align:center;font-size:12px;line-height:35px;}
+.tem_footer_copyright{margin-left:30px;height:30px;line-height:30px;}
+.powered_by_metinfo{height:35px;background:#2e2e2e;color:#4a4a4a;text-align:center;font-size:12px;line-height:35px;}
 .powered_by_metinfo a{color:#4a4a4a;}
 .met_section{position:relative;padding:40px 0 50px;}
 .met_section aside{position:relative;float:left;width:230px;}

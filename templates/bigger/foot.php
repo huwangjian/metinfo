@@ -5,13 +5,17 @@ echo <<<EOT
 -->
 <footer class="tem_footer">
 	<section class="tem_inner">
-		<div class="tem_footer_nav">{$met_foot_nav}</div>
-		<div class="tem_footer_text">
-		{$met_foot_txt}
-		</div>
+        <div class="tem_footer_left">
+            <a href="/"><img src="/templates/bigger/images/footer_logo.png"></a>
+        </div>
+        <div class="tem_footer_right">
+    		<div class="tem_footer_nav">{$met_foot_nav}</div>
+            <div class="tem_footer_copyright">地址：{$met_footaddress} 电话：{$met_foottel}</div>
+            <div class="tem_footer_copyright">{$met_footright}</div>
+        </div>
 	</section>
 </footer>
-<div class="powered_by_metinfo">Powered&nbsp;by&nbsp;<a href="http://www.MetInfo.cn" target="_blank" title="{$lang_Info1}">MetInfo&nbsp;{$metcms_v}</a> &copy;2008-{$m_now_year}&nbsp;<a href="http://www.MetInfo.cn" target="_blank" title="{$lang_Info3}">www.metinfo.cn</a></div>
+<div class="powered_by_metinfo">Powered&nbsp;by&nbsp;<a href="http://www.MetInfo.cn" target="_blank" title="{$lang_Info1}">MetInfo</a> &copy;2008-{$m_now_year}&nbsp;<a href="http://www.MetInfo.cn" target="_blank" title="{$lang_Info3}">www.metinfo.cn</a></div>
 <script src="{$navurl}public/ui/v1/js/sea.js" type="text/javascript"></script>
 </body>
 </html>
