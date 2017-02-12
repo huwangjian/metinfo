@@ -56,8 +56,10 @@ header h1{display:inline;}
 .tem_banner ul li img{ max-width:100%; height:auto;}
 .tem_banner .flex-control-nav{position:absolute;right:0;bottom:20px;left:0;text-align:center;}
 .tem_banner .flex-control-nav li{margin:0px;}
-.tem_banner .flex-control-nav li a{display:inline-block;margin:0 6px;width:10px;height:10px;border:1px solid #fff;border-radius:10px;text-indent:-999em;cursor:pointer; background:none;}
-.tem_banner .flex-control-nav li a.flex-active{background:#fff;}
+.tem_banner .flex-control-nav li a{cursor:pointer;display:inline-block;*display:inline;zoom:1;width:20px;height:5px;margin:5px;overflow:hidden;background:rgba(255,255,255,0.5);line-height:999px;-moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;background:url(../../images/index_icon_1.png) no-repeat\0;border:0px}
+.tem_banner .flex-control-nav li a.flex-active{background:#fff;background:url(../../images/index_icon_2.png) no-repeat\0;}
+/*.tem_banner .flex-control-nav li a{display:inline-block;margin:0 6px;width:10px;height:10px;border:1px solid #fff;border-radius:10px;text-indent:-999em;cursor:pointer; background:none;}
+.tem_banner .flex-control-nav li a.flex-active{background:#fff;}*/
 .tem_banner .flash img{width:100%!important;}
 .tem_index_title{margin:0 0 60px 0;border-bottom:1px solid #ccc;text-align:center;font-weight:normal;font-size:22px;}
 .tem_index_title span{position:relative;top:2px;display:inline-block;padding:10px 15px;border-bottom:4px solid #666;}
