@@ -13,8 +13,8 @@ echo <<<EOT
 				<p></p>
 			</span>
 		</h3>
-        <div class="tem_index_product_list">
-		<ul data-product_x="{$lang_product_x}">
+        <div class="tem_banner tem_index_product_list">
+		<ul data-product_x="{$lang_product_x}" class="slides" style="height:140px">
 <!--
 EOT;
 foreach($tem_product['list'] as $key=>$val){
@@ -24,7 +24,7 @@ echo <<<EOT
 			<li class="{$tem_wp2}">
 				<a href="/product/" title="{$val[title]}" {$metblank}>
 				  <img src="{$val[imgurl]}" title="{$val[title]}" alt="{$val[title]}" width ="{$lang_product_x}" height="{$lang_product_y}" />
-				  <h2>{$val[title]}</h2>
+				  <h3>{$val[title]}</h3>
 				</a>
 			</li>
 <!--
