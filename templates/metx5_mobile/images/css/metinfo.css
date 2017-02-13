@@ -1,22 +1,22 @@
 @charset "utf-8";
 html,body{background:#fff;color:#333;font:14px/1.6 'Microsoft YaHei',Tahoma,Verdana,'Simsun';}
 body a{color:#333;text-decoration:none;}
-body a:hover{color:#e9280c;text-decoration:none;}
+body a:hover{color:#015db2;text-decoration:none;}
 header{ position:relative; z-index:11;}
 .tem_inner,.met_section{ position:relative;}
-.tem_top{ overflow:hidden; height:50px; background:#e9280c; color:#fff; }
+.tem_top{ overflow:hidden; height:50px; background:#015db2; color:#fff; }
 .tem_top i{ position:absolute; padding:0px 10px; height:35px; font-size:24px; line-height:35px; }
 .tem_top i.am-icon-bars{ top:7px; right:5px; }
 .tem_top i.am-icon-globe{ top:7px; right:55px; }
-.tem_top i.met_now{ background:#cf260d; }
+.tem_top i.met_now{ background:#0075c2; }
 .tem_top h1,.tem_top h2{ margin:0; }
 .tem_top h1 img,.tem_top h2 img{ visibility:visible; max-height:50px!important; }
 .tem_top_nav{ display:none; }
 .tem_head ul:after{clear:both;display:block;visibility:hidden;height:0;content:"";}
-.tem_head ul{ margin:0px; padding:0px; background:#cf260d; color:#fff; }
+.tem_head ul{ margin:0px; padding:0px; background:#015db2; color:#fff; }
 .tem_head li{ list-style:none; }
 .tem_head li a{ display:block; padding:15px; color:#fff; }
-.tem_head li a:hover,.tem_head li a.navdown,.tem_head li a.met_now{ background:#b7250f; }
+.tem_head li a:hover,.tem_head li a.navdown,.tem_head li a.met_now{ background:#0075c2; }
 
 .tem_banner ul{ margin:0px; padding:0px;}
 .tem_banner{position:relative;overflow:hidden;background:#fafafa;text-align:center;font-size:0;}
@@ -33,8 +33,8 @@ header{ position:relative; z-index:11;}
 .tem_index_title span{position:relative;top:2px;display:inline-block;padding:10px 15px;border-bottom:4px solid #666;}
 .tem_index_title p{ margin:0px; height:0px;color:#8c8c8c;font-weight:normal;font-size:0px;}
 .tem_index_more{clear:both;margin:0 auto;padding-top:30px;width:200px;text-align:center;}
-.tem_index_more a{display:block;height:40px;background:#e9280c;color:#fff;font-weight:normal;font-size:14px;line-height:40px;}
-.tem_index_more a:hover{background:#d82208;color:#fff;}
+.tem_index_more a{display:block;height:40px;background:#015db2;color:#fff;font-weight:normal;font-size:14px;line-height:40px;}
+.tem_index_more a:hover{background:#0075c2;color:#fff;}
 
 .tem_index_about{padding:20px 10px 30px;}
 .tem_index_about_more{margin:0px;padding-top:20px;}

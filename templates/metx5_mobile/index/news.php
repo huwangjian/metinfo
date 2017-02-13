@@ -30,13 +30,13 @@ foreach($tem_news as $key=>$val){
 $i++;
 $now = $i==1?'class="flex-active"':'';
 echo <<<EOT
--->
+--> 
 			<li {$now}><h3>{$val[name]}</h3></li>
 <!--
 EOT;
 }
 echo <<<EOT
--->
+--> 
 		</ol>
 		<div class="am-slider tem_index_news_slides">
 		<ul class="am-slides">
@@ -47,7 +47,7 @@ foreach($tem_news as $key=>$val){
 $i++;
 $none = $i>1?'met_none':'';
 echo <<<EOT
--->
+--> 
 		<li class="tem_index_news_list {$none}">
 <!--
 EOT;
@@ -69,14 +69,14 @@ echo <<<EOT
 EOT;
 }
 echo <<<EOT
--->
+--> 
 			<h4 class="tem_index_more"><a href="{$val[url]}" title="{$lang_news_more}" {$metblank}>{$lang_news_more}</a></h4>
 		</li>
 <!--
 EOT;
 }
 echo <<<EOT
--->
+--> 
 		</ul>
 		</div>
 		<div class="met_clear"></div>

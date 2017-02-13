@@ -9,15 +9,15 @@ if($lang_about_open){
 $w++;
 require_once template('index/about');
 }
-if($lang_product_open){
-$w++;
-$into = $w%2==0?'tem_index_to':'';
-require_once template('index/product');
-}
 if($lang_news_open){
 $w++;
 $into = $w%2==0?'tem_index_to':'';
 require_once template('index/news');
+}
+if($lang_product_open){
+$w++;
+$into = $w%2==0?'tem_index_to':'';
+require_once template('index/product');
 }
 if($lang_case_open){
 $w++;
