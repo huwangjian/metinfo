@@ -13,7 +13,7 @@ echo <<<EOT
 				<p></p>
 			</span>
 		</h3>
-        <div class="tem_banner tem_index_product_list">
+        <div class="tem_banner tem_index_product_list" style="min-width:100px!important;">
 		<ul data-product_x="{$lang_product_x}" class="slides" style="height:140px">
 <!--
 EOT;

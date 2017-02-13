@@ -1,6 +1,6 @@
 <!--<?php
-# MetInfo Enterprise Content Management System 
-# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved. 
+# MetInfo Enterprise Content Management System
+# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved.
 defined('IN_MET') or exit('No permission');
 $loginbg = $_M['config']['met_member_bgimage']?" background-image:url({$_M['config']['met_member_bgimage']});":'';
 echo <<<EOT

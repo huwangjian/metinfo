@@ -1,6 +1,6 @@
 <?php
-# MetInfo Enterprise Content Management System 
-# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved. 
+# MetInfo Enterprise Content Management System
+# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved.
 function metlabel_head($closure=1,$iehack=1,$mobileto=''){
 	global $met_mobileok,$met_title,$show,$classnow,$id,$class_list,$navurl,$met_js_access,$img_url;
 	global $appscriptcss;
@@ -38,7 +38,7 @@ function metlabel_head($closure=1,$iehack=1,$mobileto=''){
 <meta name=\"keywords\" content=\"{$show['keywords']}\" />
 <meta name=\"renderer\" content=\"webkit\">
 <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">
-<meta content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0\" name=\"viewport\" />
+<meta content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1\" name=\"viewport\" />
 <meta name=\"generator\" content=\"MetInfo {$_M[config][metcms_v]}\"  data-variable=\"{$_M[config][met_weburl]}|{$_M[lang]}|{$classnow}|{$id}|{$class_list[$classnow][module]}|{$_M[config][met_skin_user]}\" />
 <link href=\"{$navurl}favicon.ico\" rel=\"shortcut icon\" />
 <link rel=\"stylesheet\" type=\"text/css\" href=\"{$img_url}css/{$met_skin_css}\" />
@@ -82,13 +82,13 @@ function metlabel_topnav($dt='',$tp=1,$lok=1){
 	foreach($file_site as $keyfile=>$valflie){
 		if(file_exists(ROOTPATH."$met_adminfile".$valflie)&&!is_dir(ROOTPATH."$met_adminfile".$valflie)&&((file_get_contents(ROOTPATH."$met_adminfile".$valflie))!='metinfo')){require_once ROOTPATH."$met_adminfile".$valflie;}
 	}
-	
+
 	return $metinfo;
-	
+
 }
 function metlabel_form($list,$type){
 	global $fdjs,$lang,$lang_Nolimit,$lang_memberPosition,$selectjob,$cv_para,$paravalue,$met_memberlogin_code,$lang_memberImgCode,$lang_memberTip1,$lang_Submit,$navurl;
-	$lista=array(); 
+	$lista=array();
 	foreach($list as $key=>$val){
 		$metinfo="";
 		switch($val[type]){

@@ -28,7 +28,7 @@ function metlabel_html5($closure=1,$iehack=1,$mobile=0){
 		$metinfo.="<meta http-equiv='Cache-Control' content='no-siteapp' />\n";
         $metinfo.="<meta charset='utf-8' />\n";
         $metinfo.="<title>{$met_title}</title>\n";
-        $metinfo.="<meta content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0\" name=\"viewport\" />\n";
+        $metinfo.="<meta content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1\" name=\"viewport\" />\n";
         $metinfo.="<meta content=\"yes\" name=\"apple-mobile-web-app-capable\" />\n";
         $metinfo.="<meta content=\"black\" name=\"apple-mobile-web-app-status-bar-style\" />\n";
         $metinfo.="<meta content=\"telephone=no\" name=\"format-detection\" />\n";
