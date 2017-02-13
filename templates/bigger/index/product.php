@@ -6,14 +6,14 @@ $tem_product['list'] = methtml_getarray($lang_product_id,$lang_product_type,'',$
 $tem_wp2 = $lang_waypointsok==1?'tem_wp2':'';
 echo <<<EOT
 -->
-<section class="tem_index_product {$into}">
-	<div class="tem_inner">
-		<h3 class="tem_index_title">
+<div class="tem_index_product {$into}">
+		<h3 class="tem_index_title tem_index_right_title">
 			<span>
-				{$tem_product[name]}
+				<a href="/product/">{$tem_product[name]}</a>
 				<p></p>
 			</span>
 		</h3>
+        <div class="tem_index_product_list">
 		<ul data-product_x="{$lang_product_x}">
 <!--
 EOT;
@@ -22,7 +22,7 @@ $val[imgurl]="{$thumb_src}dir=../{$val[imgurl]}&x={$lang_product_x}&y={$lang_pro
 echo <<<EOT
 -->
 			<li class="{$tem_wp2}">
-				<a href="{$val[url]}" title="{$val[title]}" {$metblank}>
+				<a href="/product/" title="{$val[title]}" {$metblank}>
 				  <img src="{$val[imgurl]}" title="{$val[title]}" alt="{$val[title]}" width ="{$lang_product_x}" height="{$lang_product_y}" />
 				  <h2>{$val[title]}</h2>
 				</a>
@@ -31,12 +31,10 @@ echo <<<EOT
 EOT;
 }
 echo <<<EOT
---> 
+-->
 		</ul>
-		<div class="met_clear"></div>
-		<h4 class="tem_index_more"><a href="{$tem_product[url]}" title="{$lang_product_more}" {$metblank}>{$lang_product_more}</a></h4>
-	</div>
-</section>
+        </div>
+</div>
 <!--
 EOT;
 ?>

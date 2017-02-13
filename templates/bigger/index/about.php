@@ -11,7 +11,7 @@ $txtwd100 = $tem_aboutimg||$lang_about_video?'':'txtwd100';
 $tem_wp1 = $lang_waypointsok==1?'tem_wp1':'';
 echo <<<EOT
 -->
-    <div class="tem_index_about">
+<div class="tem_index_about">
 		<h3 class="tem_index_title">
 			<span>
 				<a href="/about/">{$lang_about_title}</a>
@@ -52,7 +52,7 @@ echo <<<EOT
             </div>
 			<div class="met_clear"></div>
 		</div>
-	</div>
+</div>
 
 <!--
 EOT;

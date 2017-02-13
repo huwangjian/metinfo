@@ -76,7 +76,6 @@ EOT;
 }
 echo <<<EOT
 -->
-		<div class="met_clear"></div>
 </div>
 <!--
 EOT;

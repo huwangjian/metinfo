@@ -3,8 +3,6 @@ html,body{background:#fff;color:#333;font:14px/1.6 'Microsoft YaHei',Tahoma,Verd
 a{color:#015db2;text-decoration:none;}
 a:hover{color:#0075c2;text-decoration:none;}
 .tem_inner,.met_section{position:relative;margin:0 auto;margin:0 auto;width:1100px;}
-@media(min-width:1000px){.tem_inner{padding:0;width:1000px;}
-}
 @media(min-width:1200px){.tem_inner,.met_section{padding:0;width:1100px;}
 }
 @media(min-width:1800px){.tem_inner,.met_section{padding:0;width:70%;}
@@ -94,7 +92,8 @@ header h1{display:inline;}
 .tem_index_about_more{padding:0px;}
 .tem_index_about_more a{display:inline-block;padding:0 30px;height:30px;border:2px solid #eee;color:#999!important;text-decoration:none;font-weight:normal;line-height:30px;}
 .tem_index_about_more a:hover{ background:#eee; text-decoration:none!important; }
-.tem_index_product{padding:50px 0 80px;}
+.tem_index_product{margin: 0px 0px 0px 0px;width:100%;height:215px;float: left;}
+.tem_index_product_list{margin:20px 10px;}
 .tem_index_product ul{list-style:none;}
 .tem_index_product ul li{float:left;overflow:hidden;margin-bottom:30px;text-align:center;}
 .tem_index_product ul li a{display:block;margin:0 auto;background:#fff;text-align:center;font-size:0;}
@@ -122,9 +121,12 @@ header h1{display:inline;}
 .tem_index_news_list_txt span.time{display:block;height:25px;color:#818181;line-height:25px;}
 .tem_index_news_list li dl:hover{background:#f7f8fa;}
 .tem_index_news_list .tem_index_more{float:none;width:200px;text-align:center;}
-.tem_index_case{padding:50px 0 80px;}
+.tem_index_right_container{margin: 0px 0px 0px 10px;width:18%;height:430px;float: left;}
+.tem_index_right_title{margin:0 0px 0 10px!important;}
+.tem_index_case{margin: 0px 0px 0px 0px;width:100%;height:215px;float: left;}
+.tem_index_case_list {margin:20px 10px;}
 .tem_index_case_list ul.slides li{float:left;list-style:none;}
-.tem_index_case_list .tem_list{float:left;width:25%;}
+.tem_index_case_list .tem_list{float:left;width:100%;}
 .tem_index_case_list .tem_list dt{ text-align:center;font-size:0;}
 .tem_index_case_list .tem_list dt a{display:block;overflow:hidden;margin:0 auto;}
 .tem_index_case_list .tem_list dt img{-webkit-transition:all .3s ease;-moz-transition:all .3s ease;transition:all .3s ease;}
@@ -206,7 +208,7 @@ button,input,select,textarea{font-size:100%}
 .met_fr{float:right}
 .met_editor{line-height:2}
 .met_editor ul,.met_editor ol{padding:0 0 0 25px;margin:0}
-.met_editor a{color:#1c57c4}
+.met_editor a{display:inline;height:30px;color:#999!important;text-decoration:none;font-weight:normal;}
 .met_editor a:hover{text-decoration:underline}
 .met_editor img{max-width:100%;height:auto!important;}
 .met_editor blockquote{padding-top:5px;padding-bottom:5px;padding-left:15px;border-left:4px solid #ddd}

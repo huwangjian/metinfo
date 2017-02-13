@@ -5,11 +5,10 @@ $tem_case['list'] = methtml_getarray($lang_case_id,$lang_case_type,'','',$lang_c
 $tem_wp4 = $lang_waypointsok==1?'tem_wp4':'';
 echo <<<EOT
 -->
-<section class="tem_index_case {$into}">
-	<div class="tem_inner">
-		<h3 class="tem_index_title">
+<div class="tem_index_case {$into}">
+		<h3 class="tem_index_title tem_index_right_title">
 			<span>
-				{$tem_case[name]}
+				<a href="/case/">{$tem_case[name]}</a>
 				<p></p>
 			</span>
 		</h3>
@@ -28,7 +27,7 @@ echo <<<EOT
 -->
 			{$qq}
 				<dl class="tem_list {$tem_wp4}">
-					<dt><a href="{$val[url]}" title="{$val[title]}" {$metblank}><img src="{$val[imgurl]}" title="{$val[title]}" alt="{$val[title]}" width="{$lang_case_x}" height="{$lang_case_y}" /></a></dt>
+					<dt><a href="/case/" title="{$val[title]}" {$metblank}><img src="{$val[imgurl]}" title="{$val[title]}" alt="{$val[title]}" width="{$lang_case_x}" height="{$lang_case_y}" /></a></dt>
 					<dd>
 						<h3><a href="{$val[url]}" title="{$val[title]}" {$metblank}>{$val[title]}</a></h3>
 					</dd>
@@ -38,13 +37,10 @@ echo <<<EOT
 EOT;
 }
 echo <<<EOT
---> 
+-->
 		</ul>
 		</div>
-		<div class="met_clear"></div>
-		<h4 class="tem_index_more"><a href="{$tem_case[url]}" title="{$lang_case_more}" {$metblank}>{$lang_case_more}</a></h4>
-	</div>
-</section>
+</div>
 <!--
 EOT;
 ?>

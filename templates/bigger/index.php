@@ -9,6 +9,18 @@ require_once template('index/about');
 require_once template('index/news');
 echo <<<EOT
 -->
+<div class="tem_index_right_container">
+<!--
+EOT;
+require_once template('index/case');
+require_once template('index/product');
+echo <<<EOT
+-->
+</div>
+<!--
+EOT;
+echo <<<EOT
+-->
     <div class="met_clear"></div>
 </div>
 <!--
