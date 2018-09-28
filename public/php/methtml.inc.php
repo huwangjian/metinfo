@@ -17,7 +17,7 @@ if($met_js_access)$methtml_head.=$met_js_access."\n";
 //memberjs
 if($met_skin_css=='')$met_skin_css='metinfo.css';
 $methtml_head.="<link rel=\"stylesheet\" type=\"text/css\" href=\"".$img_url."css/".$met_skin_css."\" />\n";
-$methtml_head.="<script src=\"".$met_url."js/metinfo-min.js\" type=\"text/javascript\"></script>\n";
+$methtml_head.="<script src=\"".$navurl."app/system/include/public/js/jquery/1.11.1/jquery.js\" type=\"text/javascript\"></script>\n";
 if($met_ch_lang and $lang==$met_ch_mark)$methtml_head.="<script src=\"".$met_url."js/ch.js\" type=\"text/javascript\"></script>\n";
 //style
 if($lang_fontfamily<>''||$lang_fontsize<>''||$lang_backgroundcolor<>''||$lang_fontcolor<>''||$lang_urlcolor<>''||$lang_hovercolor<>''){
@@ -88,7 +88,7 @@ $methtml_now.="d[today.getDay()+1],\n";
 $methtml_now.="''); \n";
 $methtml_now.="</script>\n";
 
-if($index_hadd_ok&&$metinfover != 'v1'){
+if($index_hadd_ok&&$metinfover != 'v1'&&$metinfover != 'v2'){// 增加$metinfover判断值（新模板框架v2）
 	//set home page
 	$methtml_sethome="<a href='#' onclick='SetHome(this,window.location,\"$lang_MessageInfo5\");' style='cursor:pointer;' title='".$lang_sethomepage."'  >".$lang_sethomepage."</a>";
 	//bookmark
@@ -431,7 +431,7 @@ if($imgurl=='')$imgurl=$met_flash_img;
 if($imglink=='')$imglink=$met_flash_imglink;
 if($imgtitle=='')$imgtitle=$met_flash_imgtitle;
 $imglink=str_replace('&','%26',$imglink);
-if($metinfover=='v1'){
+if($metinfover=='v1' || $metinfover == 'v2'){// 增加$metinfover判断值（新模板框架v2）
 switch($type){
 case 1:
 	$methtml_flash.="
@@ -787,18 +787,38 @@ switch($met_flasharray[$classnow][type]){
 				$methtml_flash.="</ul>\n";
 				$methtml_flash.="</div>\n";
 				$methtml_flash.="<script type='text/javascript'>
-							$(document).ready(function(){
-								$('#slider6').bxSlider({
-									mode:'vertical',
-									autoHover:true,
-									auto: true,
-									pager: true,
-									pause: 5000, 
-									controls:false
-								});
-							});
-							</script>
-				";
+								var bxSliderFun=function(){
+										$(document).ready(function(){
+											var slider_img=new Image();
+											slider_img.src=$('#slider6 img:eq(0)').attr('src');
+											slider_img.onload=function(){
+												var bxSlider=function(){
+														$('#slider6').bxSlider({ mode:'vertical',autoHover:true,auto:true,pager: true,pause: 5000,controls:false});
+													};
+												if(typeof $.fn.bxSlider !='undefined'){
+													bxSlider();
+												}else{
+													var interval_bxSlider=setInterval(function(){
+															if(typeof $.fn.bxSlider !='undefined'){
+																bxSlider();
+																clearInterval(interval_bxSlider);
+															}
+														},100);
+												}
+											};
+										});
+									};
+								if (jQuery){
+									bxSliderFun();
+								}else{
+									var interval_bxSliderFun=setInterval(function(){
+										if(jQuery){
+											bxSliderFun();
+											clearInterval(interval_bxSliderFun);
+										}
+									},100);
+								}
+								</script>";
 			break;
 			case 7:
 				$methtml_flash.="<div id='flashcontent01' class='flash'></div>\n";
@@ -878,9 +898,9 @@ function methtml_getarray($mark,$type,$order,$module,$listmx=-1,$para=0,$categor
 	if($met_member_use==2)$access_sql= " and access<=$metinfo_member_type";
 	$numname = ' id,title,description,class1,class2,class3,updatetime,addtime,filename,access,top_ok,hits,issue,com_ok,no_order,';
 	$listitem['news']=array(0=>$numname.'keywords,img_ok,imgurls,content,imgurl,links',1=>$met_news,2=>'shownews');
-	$listitem['product']=array(0=>$numname.'keywords,new_ok,imgurls,content,imgurl,displayimg,links',1=>$met_product,2=>'showproduct');
-	$listitem['download']=array(0=>$numname.'keywords,downloadurl,filesize,content,downloadaccess',1=>$met_download,2=>'showdownload');
-	$listitem['img']=array(0=>$numname.'keywords,new_ok,imgurls,content,imgurl,displayimg,links',1=>$met_img,2=>'showimg');
+    $listitem['product']=array(0=>$numname.'keywords,new_ok,imgurls,content,imgurl,imgsize,displayimg,links',1=>$met_product,2=>'showproduct');//增加图片尺寸属性imgsize（新模板框架v2）
+    $listitem['download']=array(0=>$numname.'keywords,downloadurl,filesize,content,downloadaccess',1=>$met_download,2=>'showdownload');
+    $listitem['img']=array(0=>$numname.'keywords,new_ok,imgurls,content,imgurl,imgsize,displayimg,links',1=>$met_img,2=>'showimg');//增加图片尺寸属性imgsize（新模板框架v2）
 	$listitem['job']=array(0=>'*',1=>$met_job,2=>'showjob');
 	$sqlorder=$order=='hits'?' order by top_ok desc,com_ok desc,no_order desc,hits desc,id desc':' order by top_ok desc,com_ok desc,no_order desc,updatetime desc,id desc';
 	switch($type){
@@ -1106,7 +1126,14 @@ function methtml_getarray($mark,$type,$order,$module,$listmx=-1,$para=0,$categor
 		$htmname=($list['filename']<>"")?$filename."/".$list['filename']:$filename."/".$filenamenow.$list['id'];
 		$panyid = $list['filename']!=''?$list['filename']:$list['id'];
 		$met_ahtmtype = $list['filename']<>""?$met_chtmtype:$met_htmtype;
-		$phpname=$met_pseudo?$filename."/".$panyid.'-'.$lang.'.html':$filename."/".$listitem[$module][2].".php?".$langmark."&id=".$list['id'];	
+        ##$phpname=$met_pseudo?$filename."/".$panyid.'-'.$lang.'.html':$filename."/".$listitem[$module][2].".php?".$langmark."&id=".$list['id'];
+        global $_M;
+        if($_M['config']['met_defult_lang']){
+            $phpname=$met_pseudo?$filename."/".$panyid.'-'.$lang.'.html':$filename."/".$listitem[$module][2].".php?".$langmark."&id=".$list['id'];
+        }
+    else{
+            $phpname=$met_pseudo?$filename."/".$panyid.'.html':$filename."/".$listitem[$module][2].".php?".$langmark."&id=".$list['id'];
+        }
 		if($list['links']){
 			$list['url']=$list['links'];
 		}else{
@@ -1257,7 +1284,7 @@ global $met_pageclick,$met_pagetime,$met_pageprint,$met_pageclose;
 	$listnow=$$module;
 	if($module=='job')$listnow[updatetime]=$listnow[addtime];
 	$metinfo.="<div class='metjiathis'>{$met_tools_code}</div>";
-	if($metinfover == 'v1'){
+	if($metinfover == 'v1' || $metinfover == 'v2'){// 增加$metinfover判断值（新模板框架v2）
 		if($module!='job' && $met_pageclick)$metinfo.=$lang_Hits."：<span class='metClicks' data-metClicks=".$module."|".$listnow[id]."></span>";
 		if($met_pagetime)$metinfo.='　'.$lang_UpdateTime.'：'.$listnow['updatetime'];
 		if($met_pageprint)$metinfo.='　【<a href="#" class="metPrinting">'.$lang_Printing.'</a>】';

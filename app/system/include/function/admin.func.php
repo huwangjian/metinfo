@@ -1,20 +1,21 @@
 <?php
-# MetInfo Enterprise Content Management System 
-# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved. 
+# MetInfo Enterprise Content Management System
+# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved.
 
 defined('IN_MET') or exit('No permission');
 
 /**
  * 页面跳转
  */
-function turnover($url, $text = '') {
-	global $_M;	
+function turnover($url, $text = '',$success=1) {
+	global $_M;
 	if(!$text)$text = $_M['word']['jsok'];
 	if($text == 'No prompt') {
 		$text = '';
 	}
+
 	$text = urlencode($text);
-	echo("<script type='text/javascript'>location.href='{$url}&turnovertext={$text}';</script>");
+	echo("<script type='text/javascript'>location.href='{$url}&turnovertext={$text}&turnovertype=".$success."';</script>");
 	exit;
 }
 
@@ -65,47 +66,50 @@ function admin_information(){
  */
 function background_privilege(){
 	global $_M;
-	$metinfo_admin_name = $_M['user']['admin_name'];
-	$query = "SELECT * from {$_M['table']['admin_table']} WHERE admin_id = '{$metinfo_admin_name}'";
-	$user = DB::get_one($query);
-	$privilege = array();
-	$privilege['admin_op'] = $user['admin_op'];
-	if(strstr($user['langok'], "metinfo")) {
-		$privilege['langok'] = $_M['langlist']['web'];
-	} else {
-		$langok = explode('-',$user['langok']);
-		foreach($langok as $key=>$val){
-			if($val) {
-				$privilege['langok'][$val] = $_M['langlist']['web'][$val];
+	if(!$_M['privilege']){
+		$metinfo_admin_name = $_M['user']['admin_name'];
+		$query = "SELECT * from {$_M['table']['admin_table']} WHERE admin_id = '{$metinfo_admin_name}'";
+		$user = DB::get_one($query);
+		$privilege = array();
+		$privilege['admin_op'] = $user['admin_op'];
+		if(strstr($user['langok'], "metinfo")) {
+			$privilege['langok'] = $_M['langlist']['web'];
+		} else {
+			$langok = explode('-',$user['langok']);
+			foreach($langok as $key=>$val){
+				if($val) {
+					$privilege['langok'][$val] = $_M['langlist']['web'][$val];
+				}
 			}
 		}
+		if(strstr($user['admin_type'], "metinfo")){
+			$privilege['navigation'] = "metinfo";
+			$privilege['column'] = "metinfo";
+			$privilege['application'] = "metinfo";
+			$privilege['see'] = "metinfo";
+		}else{
+			$allidlist = explode('-', $user['admin_type']);
+			foreach($allidlist as $key=>$val){
+				if(strstr($val, "s")){
+					$privilege['navigation'].= str_replace('s','',$val)."|";
+				}
+				if(strstr($val, "c")){
+					$privilege['column'].= str_replace('c','',$val)."|";
+				}
+				if(strstr($val, "a")){
+					$privilege['application'].= str_replace('a','',$val)."|";
+				}
+				if($val == 9999){
+					$privilege['see'] = "metinfo";
+				}
+			}
+			$privilege['navigation'] = trim($privilege['navigation'], '|');
+			$privilege['column'] = trim($privilege['column'], '|');
+			$privilege['application'] = trim($privilege['application'], '|');
+		}
+		$_M['privilege'] = $privilege;
 	}
-	if(strstr($user['admin_type'], "metinfo")){
-		$privilege['navigation'] = "metinfo";
-		$privilege['column'] = "metinfo";
-		$privilege['application'] = "metinfo";
-		$privilege['see'] = "metinfo";
-	}else{
-		$allidlist = explode('-', $user['admin_type']);
-		foreach($allidlist as $key=>$val){
-			if(strstr($val, "s")){
-				$privilege['navigation'].= str_replace('s','',$val)."|";
-			}
-			if(strstr($val, "c")){
-				$privilege['column'].= str_replace('c','',$val)."|";
-			}
-			if(strstr($val, "a")){
-				$privilege['application'].= str_replace('a','',$val)."|";
-			}
-			if($val == 9999){
-				$privilege['see'] = "metinfo";
-			}
-		}	
-		$privilege['navigation'] = trim($privilege['navigation'], '|');
-		$privilege['column'] = trim($privilege['column'], '|');
-		$privilege['application'] = trim($privilege['application'], '|');
-	}
-	return $privilege;
+	return $_M['privilege'];
 }
 
 /**
@@ -116,7 +120,7 @@ function operation_column() {
 	global $_M;
 	$jurisdiction = background_privilege();
 	if($jurisdiction['column'] == "metinfo"){
-		$query = "SELECT * from {$_M['table']['column']} WHERE lang = '{$_M['lang']}' AND module < 100";
+		$query = "SELECT * from {$_M['table']['column']} WHERE lang = '{$_M['lang']}' AND module < 100 ORDER BY no_order ASC, id DESC";
 		$admin_column = DB::get_all($query);
 	}else{
 		$column_id = explode('|', $jurisdiction['column']);
@@ -147,6 +151,36 @@ function operation_column() {
 		$column[$val['id']] = $admin_column[$key];
 	}
 	return $column;
+}
+
+/**
+ * 是否有权限操作
+ * @param  int    $type		1；按模块生成;2：按栏目生成
+ * @return array  $column	返回把记录当前管理员有权限操作的栏目信息的数组按模块归类或栏目归类整理后的数组
+ */
+function is_have_power($now){
+	$power = background_privilege();
+	$a = substr($now, 0, 1);
+	switch ($a) {
+		case 's':
+			$list = $power['navigation'];
+		break;
+		case 'a':
+		$list = $power['application'];
+		break;
+		case 'c':
+			$list = $power['column'];
+		break;
+	}
+	$p = str_replace($a, '', $now);
+	if(!$list){
+		return false;
+	}
+	if ( $list == 'metinfo' || strstr("|{$list}|", "|{$p}|") ) {
+		return true;
+	}else{
+		return false;
+	}
 }
 
 /**
@@ -209,6 +243,7 @@ function column_sorting($type) {
 function get_adminnav() {
 	global $_M;
 	$jurisdiction = background_privilege();
+	//dump($jurisdiction);
 	$query = "select * from {$_M['table']['admin_column']} order by type desc,list_order";
 	$sidebarcolumn = DB::get_all($query);
 	$bigclass = array();
@@ -216,9 +251,9 @@ function get_adminnav() {
 		foreach ($sidebarcolumn as $key => $val) {
 			if(trim($val['name']) == 'lang_adminmobile' && $_M['config']['met_wap'] == 0){
 				unset($sidebarcolumn[$key]);
-			}	
+			}
 		}
-		
+
 	}
 	foreach ($sidebarcolumn as $key => $val) {
 		if($val['id'] == 68)$val['field'] = '1301';
@@ -231,7 +266,7 @@ function get_adminnav() {
 		$val['name'] = get_word($val['name']);
 		$val['info'] = get_word($val['info']);
 		$bigclass[$val['bigclass']] = 1;
-		
+
 		switch ($val['type']) {
 			case 1:
 				if($bigclass[$val['id']] == 1)$adminnav[$val['id']] = $val;
@@ -331,7 +366,7 @@ function get_applist() {
 
 /**
  * 向met_tablename中插入表名
- * @param string $tablename 表名称 
+ * @param string $tablename 表名称
  */
 function add_table($tablenames) {
 	global $_M;
@@ -346,10 +381,10 @@ function add_table($tablenames) {
 		}
 	}
 }
- 
+
 /**
  * 删除met_tablename中的表名
- * @param string $tablename 表名称 
+ * @param string $tablename 表名称
  */
 function del_table($tablenames) {
 	global $_M;
@@ -390,6 +425,35 @@ function configsave($config, $have = '', $lang = ''){
 			}
 		}
 	}
+}
+
+/**
+ * 保存应用配置
+ * @param array $config  需要保存的配置的Name数组
+ * @param string $app_pre 应用名前缀
+ * @param string $have   需要保存的配置的value数组，键值为Name
+ * @param string $lang   需要保存的配置的语言
+ */
+function appconfigsave($config, $appno, $have = '', $lang = ''){
+    global $_M;
+    if($lang == '')$lang = $_M['lang'];
+    if($have == '')$have = $_M['form'];
+    $c = copykey($have, $config);
+    foreach ($c as $key => $val) {
+        $value = mysqlcheck($have[$key]);
+        if ($appno) {
+            $query = "SELECT * FROM {$_M['table']['app_config']} WHERE appno='{$appno}' AND name = '{$key}' AND lang = '{$_M['lang']}';";
+            if(!DB::get_one($query)){
+                $query = "INSERT INTO {$_M['table']['app_config']} SET appno='{$appno}', name = '{$key}', value = '{$val}', lang='{$_M['lang']}';";
+                DB::query($query);
+            }else{
+                if(isset($_M['config'][$key])&&$value!=$_M['config'][$key]&&(isset($have[$key])or(isset($have[$key]) && !$have[$key]))){
+                    $query = "update {$_M['table']['app_config']} SET value = '{$value}' WHERE appno='{$appno}' AND name = '{$key}' AND lang='{$_M['lang']}'";
+                    DB::query($query);
+                }
+            }
+        }
+    }
 }
 
 /**

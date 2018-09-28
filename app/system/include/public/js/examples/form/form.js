@@ -34,7 +34,7 @@ define(function(require, exports, module) {
 						if(l.length<v[0]||l.length>v[1]){ j=1;e+=err[8]+'|$|'; }
 					}
 				}
-				
+
 				/*不为空*/
 				if(d.attr('data-required')){
 					if(t=='input'||t=='text'||t=='password'||d[0].tagName=='TEXTAREA'){
@@ -52,7 +52,7 @@ define(function(require, exports, module) {
 						if(d.parents('div.fbox').find("input:checked").length<1){ j=1;e+=err[2]+'|$|'; }
 					}
 				}
-				
+
 				/*手机号码*/
 				if(d.attr('data-mobile')){
 					if(l!=''){
@@ -60,7 +60,7 @@ define(function(require, exports, module) {
 						if(!regexp.test(l)){ j=1;e+=err[3]+'|$|'; }
 					}
 				}
-				
+
 				/*邮箱地址*/
 				if(d.attr('data-email')){
 					if(l!=''){
@@ -68,13 +68,13 @@ define(function(require, exports, module) {
 						if(!regexp.test(l)){ j=1;e+=err[4]+'|$|'; }
 					}
 				}
-				
+
 				/*自定义验证*/
 				if(d.attr('data-custom')){
 					var rok = eval(d.attr('data-custom'));
 					if(!rok){ j=1;e+='errortxt'+'|$|'; }
 				}
-				
+
 				/*密码*/
 				if(d.attr("data-password")){
 					var p = $("input[name='"+d.attr("data-password")+"']");
@@ -82,9 +82,9 @@ define(function(require, exports, module) {
 				}
 				if($("input[data-password='"+d.attr("name")+"']").length>0){
 					var p = $("input[data-password='"+d.attr("name")+"']").eq(0);
-					fsut(p,1); 
+					fsut(p,1);
 				}
-				
+
 				/*同步验证*/
 				if(d.attr('data-ajaxcheck-url')){
 					if(l!=''){
@@ -95,8 +95,8 @@ define(function(require, exports, module) {
 							success: function(msg){
 								var m = msg.split('|');
 								var fa = Number(m[0])==0?'':'fa fa-check';
-								if(fa==''){ 
-									j=1;e+=m[1]+'|$|'; 
+								if(fa==''){
+									j=1;e+=m[1]+'|$|';
 								}else{
 									zchuli(d,m[1],0,fa);
 								}
@@ -104,7 +104,7 @@ define(function(require, exports, module) {
 						});
 					}
 				}
-				
+
 				/*不能重复*/
 				if(d.attr('data-norepeat')&&l!=''){
 					var r = d.attr('data-norepeat');
@@ -117,12 +117,12 @@ define(function(require, exports, module) {
 						j=1;e+= err[9]+'|$|';
 					}
 				}
-				
+
 				if(j==1)f += d.attr('name')+e+'|#|';
 			});
 		return f;
 	}
-	
+
 	/*报错处理*/
 	function errtxt(d,fv){ //错误文字提取
 		var t;
@@ -172,7 +172,7 @@ define(function(require, exports, module) {
 			}
 		}
 	}
-	function hfbc(d){ 
+	function hfbc(d){
 		/*清除提示信息*/
 		d.removeClass('formerrorbox');
 		if(!d.attr('data-ajaxcheck-url')){
@@ -189,17 +189,13 @@ define(function(require, exports, module) {
 				if($("input[name='"+d.attr('name')+"']").length>1){
 					var v='',c = d.parents('div.fbox').find("input[name='"+d.attr('name')+"']:checked");
 					var z = $("input[data-checkbox='"+d.attr('name')+"']");
-					if(c.length==0){
-						z.remove();
+					c.each(function(i){
+						v+=(i+1)==c.length?$(this).val():$(this).val()+'|';
+					});
+					if(z.length>0){
+						z.val(v);
 					}else{
-						c.each(function(i){
-							v+=(i+1)==c.length?$(this).val():$(this).val()+'|';
-						});
-						if(z.length>0){
-							z.val(v);
-						}else{
-							d.parents('div.fbox').append("<input name='"+d.attr('name')+"' data-checkbox='"+d.attr('name')+"' type='hidden' value='"+v+"' />");
-						}
+						d.parents('div.fbox').append("<input name='"+d.attr('name')+"' data-checkbox='"+d.attr('name')+"' type='hidden' value='"+v+"' />");
 					}
 				}
 			}
@@ -227,6 +223,16 @@ define(function(require, exports, module) {
 				}
 			}
 		}
+		// 商品图尺寸数组合并赋值（新模板框架v2）
+		var $appimagelist=d.parents('form').find('.app-image-list'),
+			imgsizes_value = '';
+		$appimagelist.find('.sort img').each(function(index, el) {
+			if(index>0) imgsizes_value+='|';
+			imgsizes_value+=$(this).data('size');
+		});
+		if(!d.parents('form').find("input[name='imgsizes']").length) $appimagelist.parent('.picture-list').after('<input type="hidden" name="imgsizes"/>');
+		d.parents('form').find("input[name='imgsizes']").val(imgsizes_value);
+
 		var f=ftn(d),r;
 		if(f){
 			chuli(f,t);//验证失败处理
@@ -237,7 +243,7 @@ define(function(require, exports, module) {
 		}
 		if(!t)return r;
 	}
-	
+
 	common.defaultoption();//默认选择项
 	/*表单验证*/
 	$(document).on('submit',"form.ui-from",function(){
@@ -247,7 +253,7 @@ define(function(require, exports, module) {
 		}else{
 			return false;
 		}
-		
+
 	});
 	$(document).on('click',"form.ui-from input[type='submit']",function(){
 		$(this).attr("data-yval",$(this).val());
@@ -257,8 +263,8 @@ define(function(require, exports, module) {
 	$(document).on('focusout',".ui-from dd input,.ui-from dd textarea",function(){
 		var c=$(this);
 		if(c.parents('dd.ftype_day').length==0){
-			if(!c.attr('type')||c.attr('type')!='submit'){		
-				fsut(c,1); 
+			if(!c.attr('type')||c.attr('type')!='submit'){
+				fsut(c,1);
 			}
 		}
 	});
@@ -272,8 +278,8 @@ define(function(require, exports, module) {
 	});
 	$(document).on('change',".ui-from select",function(){
 		var d=$(this); fsut(d,1);
-	});	
-	
+	});
+
 	//确认
 	$(document).on('click',"*[data-confirm]",function(event){
 		var my = $(this) , txt = my.attr('data-confirm'),tg = my[0].tagName;
@@ -281,7 +287,7 @@ define(function(require, exports, module) {
 		common.metalert({
 			html:txt,
 			type:'confirm',
-			callback:function(buer){ 
+			callback:function(buer){
 				if(buer){
 					switch(tg){
 						case 'A': window.location.href = my.attr("href"); break;
@@ -292,9 +298,9 @@ define(function(require, exports, module) {
 			}
 		});
 	});
-	
+
 	/*提交按钮效果*/
-	$(document).ready(function(){ 
+	$(document).ready(function(){
 		$(".ui-from .submit").focus(function(){
 			this.blur();
 		}).mousedown(function(){
@@ -304,7 +310,7 @@ define(function(require, exports, module) {
 		}).mouseleave(function(){
 			$(this).removeClass("active");
 		});
-	}); 
+	});
 
 	/*快捷提交*/
 	Array.prototype.unique = function() {
@@ -338,5 +344,5 @@ define(function(require, exports, module) {
 		}
 		keys = [];
 	});
-	
+
 });

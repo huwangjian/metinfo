@@ -467,7 +467,7 @@ $met_title=$met_title?$class_info['name'].'-'.$met_title:$class_info['name'];
 if($class_info['ctitle']!='')$met_title=$class_info['ctitle'];
 if($page>1)$met_title.='-'.$lang_Pagenum1.$page.$lang_Pagenum2;
 $pageall=$rowset->pages;
-if(($met_product_page && $class_list[$class1]['module']==3) || ($class_list[$class1]['module']==5 && $met_img_page) && $search<>'search' && $metinfover=='v1'){
+if(($met_product_page && $class_list[$class1]['module']==3) || ($class_list[$class1]['module']==5 && $met_img_page) && $search<>'search' && ($metinfover=='v1' || $metinfover=='v2')){// 增加判断值（新模板框架v2）
 	$product_listp=array();
 	if($class2 && count($nav_list3[$class2]) && !$class3){
 		$product_listp=$nav_list3[$class2];

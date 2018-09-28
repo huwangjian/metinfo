@@ -1,12 +1,12 @@
 <?php
-# MetInfo Enterprise Content Management System 
-# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved. 
+# MetInfo Enterprise Content Management System
+# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved.
 
 defined('IN_MET') or exit('No permission');
 
 /**
  * 输出字符串或数组
- * @param string/array	$vars	输出字符串或数组 
+ * @param string/array	$vars	输出字符串或数组
  * @param string		$label	提示标题
  * @param string		$return	是否有返回值
  */
@@ -29,7 +29,7 @@ function dump($vars, $label = '', $return = false){
 /**
  * 提取一个数组中部分键值返回
  * @param  array	$roc		提取的数组
- * @param  keyarray	$keyarray	需要提取的键值数组 
+ * @param  keyarray	$keyarray	需要提取的键值数组
  * @return array				返回提取的键值数组
  */
 function copykey($roc, $keyarray){
@@ -56,7 +56,11 @@ function daddslashes($string, $force = 0) {
 				$string[$key] = daddslashes($val, $force);
 			}
 		} else {
-			$string = trim(addslashes($string));
+			if(!defined('IN_ADMIN')){
+				$string = trim(addslashes(sqlinsert($string)));
+			}else{
+				$string = trim(addslashes($string));
+			}
 		}
 	}
 	return $string;
@@ -187,7 +191,7 @@ function server_info(){
 	$serverinfo['system'] = php_uname('s');                  //获取系统类型
 	$serverinfo['sysos'] = $_SERVER["SERVER_SOFTWARE"];      //获取php版本及运行环境
 	$serverinfo['phpinfo'] = PHP_VERSION;      //获取PHP信息
-	$serverinfo['mysqlinfo'] = mysql_get_server_info();      //获取数据库信息
+	$serverinfo['mysqlinfo'] = DB::version();      //获取数据库信息
 	return $serverinfo;
 }
 
@@ -325,6 +329,7 @@ function httphead_info(){
  */
 function get_word($str) {
 	global $_M;
+
 	$str_old = $str;
 	if (substr($str, 0, 5) == 'lang_') {
 		$str = str_replace('lang_', '', $str);
@@ -339,6 +344,156 @@ function get_word($str) {
 	}
 }
 
+function thumb($image_path, $x = '', $y = '',$return=0){
+	global $_M;
+	$image = load::sys_class('image','new');
+	return $image->met_thumb($image_path,$x,$y,$return);
+}
+
+
+function  met_substr($string, $start = 0,$len = 20, $end = '')
+{
+	preg_match("/<m[\s_a-zA-Z=\d->]+<\/m>/", $string,$match);
+	if($match){
+		$m = $match[0];
+	}else{
+		$m = '';
+	}
+
+	$string = preg_replace("/<m[\s_a-zA-Z=\d->]+<\/m>/", '', $string);
+    $con = mb_substr($string, $start, $len, 'utf-8');
+    $con = $con.$m;
+    if ($con != $string) {
+        $con .= $end;
+    }
+    return $con;
+}
+//判断用户终端
+/**
+ * @return bool true:mobile  false:PC
+ */
+function is_mobile() {
+    $user_agent = $_SERVER['HTTP_USER_AGENT'];
+    $mobile_agents = Array("240x320","acer","acoon","acs-","abacho","ahong","airness","alcatel","amoi","android","anywhereyougo.com","applewebkit/525","applewebkit/532","asus","audio","au-mic","avantogo","becker","benq","bilbo","bird","blackberry","blazer","bleu","cdm-","compal","coolpad","danger","dbtel","dopod","elaine","eric","etouch","fly ","fly_","fly-","go.web","goodaccess","gradiente","grundig","haier","hedy","hitachi","htc","huawei","hutchison","inno",/*"ipad",*/"ipaq","ipod","jbrowser","kddi","kgt","kwc","lenovo","lg ","lg2","lg3","lg4","lg5","lg7","lg8","lg9","lg-","lge-","lge9","longcos","maemo","mercator","meridian","micromax","midp","mini","mitsu","mmm","mmp",/*"mobi",*/"mot-","moto","nec-","netfront","newgen","nexian","nf-browser","nintendo","nitro","nokia","nook","novarra","obigo","palm","panasonic","pantech","philips","phone","pg-","playstation","pocket","pt-","qc-","qtek","rover","sagem","sama","samu","sanyo","samsung","sch-","scooter","sec-","sendo","sgh-","sharp","siemens","sie-","softbank","sony","spice","sprint","spv","symbian","tablet","talkabout","tcl-","teleca","telit","tianyu","tim-","toshiba","tsm","up.browser","utec","utstar","verykool","virgin","vk-","voda","voxtel","vx","wap","wellco","wig browser","wii","windows ce","wireless","xda","xde","zte");
+    $is_mobile = false;
+    foreach ($mobile_agents as $device) {
+        if (stristr($user_agent, $device)) {
+
+            $is_mobile = true;
+            break;
+        }
+    }
+    return $is_mobile;
+}
+/**
+ * useragent 客户端类型判断、客户端验证
+ * @param  String $isClient 需要验证的客户端类型
+ * @return String/Boolean $client 为空时返回当前客户端类型，输入tablet、mobile、desktop则返回当前客户端是否为该类型的判断值
+ */
+function met_useragent($isClient){
+    $agent = strtolower($_SERVER['HTTP_USER_AGENT']);
+    $iphone = strpos($agent, 'mobile');
+    $android = strpos($agent, 'android');
+    $windowsPhone = strpos($agent, 'phone');
+    $androidTablet=$android && !$iphone?true:false;
+    $ipad = strpos($agent, 'ipad');
+    //客户端类型判断
+    if($androidTablet!==false || $ipad!==false){
+        $client='tablet';
+    }elseif(($iphone!==false && $ipad===false) || ($android!==false && $androidTablet===false) || $windowsPhone!==false){
+        $client='mobile';
+    }else{
+        $client='desktop';
+    }
+    if($isClient){
+        return $client==$isClient?true:false;// 客户端验证
+    }else{
+        return $client;
+    }
+}
+// 内容中图片路径lazyload预处理
+function srcToLazyload($str){
+	$str = preg_replace_callback('/(<img[^>]*)src(=[^>]*>)/', function($match){
+        return $match['1']."data-original".$match['2'];
+    }, $str);
+	return $str;
+}
+/**
+ * getRelativePath 计算path2 相对于 $path1 的路径,即在path1引用paht2的相对路径
+ * @param String $path1
+ * @param String $path2
+ * @return String $relapath 相对路径
+ */
+function getRelativePath($path1,$path2){
+    global $_M;
+    if(defined('PATH_WEB')){
+        $path1=str_replace(PATH_WEB, '', $path1);
+        $path2=str_replace(PATH_WEB, '', $path2);
+    }
+    if($_M['url']['site']){
+        $path1=str_replace($_M['url']['site'], '', $path1);
+        $path2=str_replace($_M['url']['site'], '', $path2);
+    }
+    $arr1 = explode('/', $path1) ;
+    $arr2 = explode('/', $path2);
+    if(end($arr1)!='' && !strpos(end($arr1), '.')) $arr1[]='';
+    if(end($arr2)!='' && !strpos(end($arr2), '.')) $arr2[]='';
+    $c = array_values(array_diff_assoc($arr1, $arr2));
+    $d = array_values(array_diff_assoc($arr2, $arr1));
+    array_pop($c);
+    foreach($c as & $v) {
+        $v = '..';
+    }
+    $arr = array_merge($c, $d);
+    $relativePath = implode("/", $arr);
+    return $relativePath;
+}
+/**
+ * strReplace 多维数组或字符串值字符替换
+ * @param  String $find    查找的字符
+ * @param  String $replace 替换的字符
+ * @param  String $array   数组或者字符串
+ * @return array/String $array 数组或者字符串
+ */
+function strReplace($find,$replace,$array){
+    if(is_array($array)){
+        $array=str_replace($find,$replace,$array);
+        foreach ($array as $key => $val) {
+            if (is_array($val)) $array[$key]=$this->strReplace($find,$replace,$array[$key]);
+        }
+    }else{
+        $array=str_replace($find,$replace,$array);
+    }
+    return $array;
+}
+
+function get_sql($data) {
+    $sql = "";
+    foreach ($data as $key => $value) {
+        if(strstr($value, "'")){
+            $value = str_replace("'", "\'", $value);
+        }
+        $sql .= " {$key} = '{$value}',";
+    }
+    return trim($sql,',');
+}
+
+function response($msg,$status=0)
+{
+	if($status){
+		echo json_encode(array('status'=>1,'data'=>$msg));die;
+	}else{
+		echo json_encode(array('status'=>0,'msg'=>$msg));die;
+	}
+}
+
+function error($msg){
+	return array('status'=>0,'msg'=>$msg);
+}
+
+function success($data){
+	return array('status'=>1,'data'=>$data);
+}
 load::sys_func('compatible');
 load::sys_func('power');
 

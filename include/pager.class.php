@@ -114,7 +114,7 @@ if($class_list[$classnow][module]==11)$firestpage=$url.'1'.$exc;
  }
  $prepage=$langnums==1?'../'.$this->SELF.'/':$url.($this->_cur_page-1).$exc;
 
-  if($metinfover == 'v1'){
+  if($metinfover == 'v1' || $metinfover == 'v2'){// 增加$metinfover判断值（新模板框架v2）
 	$text="
 		    <div class='met_pager'>
 			";

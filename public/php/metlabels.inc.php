@@ -5,9 +5,10 @@ function metlabel_head($closure=1,$iehack=1,$mobileto=''){
 	global $met_mobileok,$met_title,$show,$classnow,$id,$class_list,$navurl,$met_js_access,$img_url;
 	global $appscriptcss;
 	global $_M;
-	$met_skin_css = $_M['config']['et_skin_css']==''?'metinfo.css':$_M['config']['et_skin_css'];
+	$met_skin_css = $_M['config']['met_skin_css']==''?'metinfo.css':$_M['config']['met_skin_css'];
 	$closure = $closure?"\n</head>":'';
 	if($met_mobileok){
+		$img_url=$_M[url][site]."/templates/".$_M['config']['met_skin_user']."/images/";
 		$metinfo="
 <!DOCTYPE HTML>
 <html>
@@ -27,8 +28,13 @@ function metlabel_head($closure=1,$iehack=1,$mobileto=''){
 <link href=\"favicon.ico\" rel=\"shortcut icon\" type=\"image/x-icon\" />
 <link rel=\"stylesheet\" type=\"text/css\" href=\"{$img_url}css/{$met_skin_css}\" />{$met_js_access}{$closure}";
 	}else{
-		$iehack = $iehack?"<!--[if IE]><script src=\"{$navurl}public/js/html5.js\" type=\"text/javascript\"></script><![endif]-->":'';
-		$metinfo="
+        if(is_mobile()){
+            $headstat = $_M['config']['met_headstat_mobile'];
+        }else{
+            $headstat = $_M['config']['met_headstat'];
+        }
+        $iehack = $iehack?"<!--[if IE]><script src=\"{$navurl}public/js/html5.js\" type=\"text/javascript\"></script><![endif]-->":'';
+        $metinfo="
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -38,11 +44,11 @@ function metlabel_head($closure=1,$iehack=1,$mobileto=''){
 <meta name=\"keywords\" content=\"{$show['keywords']}\" />
 <meta name=\"renderer\" content=\"webkit\">
 <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">
-<meta content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1\" name=\"viewport\" />
+<meta content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0\" name=\"viewport\" />
 <meta name=\"generator\" content=\"MetInfo {$_M[config][metcms_v]}\"  data-variable=\"{$_M[config][met_weburl]}|{$_M[lang]}|{$classnow}|{$id}|{$class_list[$classnow][module]}|{$_M[config][met_skin_user]}\" />
 <link href=\"{$navurl}favicon.ico\" rel=\"shortcut icon\" />
 <link rel=\"stylesheet\" type=\"text/css\" href=\"{$img_url}css/{$met_skin_css}\" />
-{$_M['html_plugin']['head_script']}{$appscriptcss}{$iehack}{$met_js_access}{$_M[config][met_headstat]}{$closure}";
+{$_M['html_plugin']['head_script']}{$appscriptcss}{$iehack}{$met_js_access}{$headstat}{$closure}";
 	}
 	return $metinfo;
 }
@@ -91,6 +97,7 @@ function metlabel_form($list,$type){
 	$lista=array();
 	foreach($list as $key=>$val){
 		$metinfo="";
+		$val[des]=$val[description];//增加描述赋值给新属性
 		switch($val[type]){
 			case 1:
 				$val[type_class]='ftype_input';
@@ -144,7 +151,7 @@ function metlabel_form($list,$type){
 				$val[type_html]=$metinfo;
 			break;
 		}
-		$lista[]=$val;
+		if($val['type'] != '100')$lista[]=$val;
 	}
 	if($met_memberlogin_code==1){
 		$val[name] = $lang_memberImgCode;

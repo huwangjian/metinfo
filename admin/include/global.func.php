@@ -207,11 +207,12 @@ function template_app($template,$EXT="html"){
 
 /*页面输出*/
 function footer(){
-	global $output;
+	global $output,$db;
 	$output = str_replace(array('<!--<!---->','<!---->','<!--fck-->','<!--fck','fck-->','',"\r",substr($admin_url,0,-1)),'',ob_get_contents());
     ob_end_clean();
 	echo $output;
-	mysql_close();
+	//mysql_close();
+	$db->close();
 	exit;
 }
 /*删掉多余页面*/

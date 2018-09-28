@@ -1,3 +1,2 @@
-/cache
-/config
-404.html
+cache/
+templates/metv6/cache/

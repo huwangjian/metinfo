@@ -54,8 +54,8 @@ if(!file_get_contents(ROOTPATH.'cache/lang_'.$lang.'.php')||!file_get_contents(R
 	}
 	$lang_json['met_weburl'] = $met_langok[$lang][met_weburl];
 	$str="<?php\n".$str."\n?>";
-	file_put_contents(ROOTPATH.'cache/lang_'.$lang.'.php',$str);
-	file_put_contents(ROOTPATH.'cache/lang_json_'.$lang.'.php',json_encode($lang_json));
+	// file_put_contents(ROOTPATH.'cache/lang_'.$lang.'.php',$str);
+	// file_put_contents(ROOTPATH.'cache/lang_json_'.$lang.'.php',json_encode($lang_json));
 }else{
 	require_once ROOTPATH.'cache/lang_'.$lang.'.php';
 }
@@ -75,7 +75,7 @@ if(file_exists($tmpincfile)){
 }
 foreach($inc as $key=>$val){
 	$name = 'lang_'.$val['name'];
-	if($val[type]==7&&strstr($val['value'],"../upload/")&&$index=='index'&&$metinfover=='v1'){
+	if(($val[type]==7||$val[type]==13)&&strstr($val['value'],"../upload/")&&$index=='index'&&($metinfover=='v1' || $metinfover=='v2')){// 增加$metinfover判断值，新增判断条件$val[type]==13（新模板框架v2）
 		$val['value']=explode("../",$val['value']);
 		$val['value']=$val['value'][1];
 	}

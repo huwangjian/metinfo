@@ -31,7 +31,11 @@ jQuery.fn.PositionFixed = function(options) {
 			domThis.style.setExpression('left', 'eval((document.documentElement).scrollLeft + ' + o.x + ') + "px"');
 			domThis.style.setExpression('top', 'eval((document.documentElement).scrollTop + ' + o.y + ') + "px"');	
 		}else{
-			objThis.css('position' , 'fixed').css('top',o.y).css('left',o.x);
+            if(t==3){
+                objThis.css("position", "fixed").css("top", o.y).css("right", o.x)
+            }else{
+                objThis.css("position", "fixed").css("top", o.y).css("left", o.x)
+            }
 		}
 	});
 };
@@ -174,8 +178,9 @@ function olne_app(msg,type,mxq,myq){
 	$('body').append(msg);
 	mx=Number(olne_domx_op(type,mxq));
 	my=Number(myq);
-	if(type>0 && type<3){//0固左1滚左2滚右3关闭4固右
+	if(type>0 && type<3){//0关闭1滚左2滚右3固左4固右
 		var floatDivr=document.getElementById('onlinebox');
+		floatDivr.style.position = "absolute";
 		Floaters.addItem(floatDivr,mx,my);
 		Floaters.sPlay();
 	}else{
@@ -189,14 +194,14 @@ function olne_app(msg,type,mxq,myq){
 }
 
 $(document).ready(function() {
-	var url=met_weburl+'include/online.php?metinfover_url=v1&lang='+lang;
+	var url=met_weburl+"online/?lang="+lang;
 	$.ajax({
 		type: "POST",
 		url: url,
 		dataType:"json",
 		success: function(msg){
 			t=msg.t,x=msg.x,y=msg.y;
-			if(t!=3){
+			if(t!=0){
 				olne_app(msg.html,t,x,y);
 			}
 		}
