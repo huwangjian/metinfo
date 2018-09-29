@@ -126,7 +126,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="collapse navbar-collapse navbar-collapse-toolbar pull-md-left p-0" id="met-nav-collapse">
+                <div class="collapse navbar-collapse navbar-collapse-toolbar p-0" id="met-nav-collapse">
                     <ul class="nav navbar-nav navlist">
                         <li class='nav-item'>
                             <a href="{$c.index_url}" title="{$word.home}" class="nav-link
