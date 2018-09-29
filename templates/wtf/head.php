@@ -1,7 +1,7 @@
 <met_meta page="$met_page" />
 <header class='met-head' m-id='met_head' m-type="head_nav">
     <nav class="navbar navbar-default box-shadow-none met-nav">
-        <div class="container">
+        <div class="container topbox">
             <div class="row">
                 <div class='met-nav-btn'>
                     <if value="$data[classnow] eq 10001">
@@ -122,7 +122,11 @@
                         </if>
                     </div>
                 </div>
-                <div class="collapse navbar-collapse navbar-collapse-toolbar pull-md-right p-0" id="met-nav-collapse">
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="collapse navbar-collapse navbar-collapse-toolbar pull-md-left p-0" id="met-nav-collapse">
                     <ul class="nav navbar-nav navlist">
                         <li class='nav-item'>
                             <a href="{$c.index_url}" title="{$word.home}" class="nav-link

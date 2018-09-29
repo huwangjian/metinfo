@@ -73,6 +73,12 @@
 <changefreq>weekly</changefreq>
 </url>
 <url>
+<loc>http://localhost/met/product/showproduct.php?id=26</loc>
+<priority>0.5</priority>
+<lastmod>2018-09-29</lastmod>
+<changefreq>weekly</changefreq>
+</url>
+<url>
 <loc>http://localhost/met/business/showproduct.php?id=32</loc>
 <priority>0.5</priority>
 <lastmod>2018-09-29</lastmod>
@@ -110,12 +116,6 @@
 </url>
 <url>
 <loc>http://localhost/met/product/showproduct.php?id=23</loc>
-<priority>0.5</priority>
-<lastmod>2018-09-29</lastmod>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc>http://localhost/met/product/showproduct.php?id=26</loc>
 <priority>0.5</priority>
 <lastmod>2018-09-29</lastmod>
 <changefreq>weekly</changefreq>

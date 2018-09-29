@@ -4,7 +4,7 @@
         <div class="row mob-masonry">
             <tag action='category' type='foot'>
             <if value="$m['_index'] lt 4">
-            <div class="col-lg-2 col-md-3 col-xs-6 list masonry-item foot-nav">
+            <div class="col-lg-3 col-md-3 col-xs-6 list masonry-item foot-nav">
                 <h4 class='font-size-16 m-t-0'>
                     <a href="{$m.url}" {$m.urlnew}  title="{$m.name}">{$m.name}</a>
                 </h4>
@@ -20,7 +20,7 @@
             </div>
             </if>
             </tag>
-            <div class="col-lg-3 col-md-12 col-xs-12 info masonry-item font-size-20" m-id='met_contact' m-type="nocontent">
+            <!-- <div class="col-lg-3 col-md-12 col-xs-12 info masonry-item font-size-20" m-id='met_contact' m-type="nocontent">
                 <if value="$lang['footinfo_tel']">
                 <p class='font-size-26'><a href="tel:{$lang.footinfo_tel}" title="">{$lang.footinfo_tel}</a></p>
                 </if>
@@ -70,7 +70,7 @@
                     <i class="fa fa-envelope red-600"></i>
                 </a>
                 </if>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
