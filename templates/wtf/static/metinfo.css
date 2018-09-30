@@ -65,6 +65,9 @@ body.met-navfixed{padding-top:60px}
 .met-nav .dropdown-menu>li>a{overflow:hidden;-webkit-transition:all .3s ease-out;transition:all .3s ease-out}
 .met-nav .dropdown-menu>li>a:hover{background:#f2f2f2 none repeat scroll 0 0;text-indent:5px;-webkit-transition:all .66s cubic-bezier(.17,.84,.44,1);transition:all .66s cubic-bezier(.17,.84,.44,1)}
 @media (min-width:768px){
+  .index_table{
+    display: none;
+  }
   .met-nav .navbar-nav {
     width:100%;
     display: flex;
@@ -114,6 +117,15 @@ body.met-navfixed{padding-top:60px}
   .met-logo img{max-height: 50px}
 }
 .navbar-shadow{box-shadow:0px 1px 3px rgba(0,0,0,0.1)}
+.index_table {
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  -webkit-box-shadow:0 1px 10px rgba(0,0,0,.15);
+  box-shadow:0 1px 10px rgba(0,0,0,.15);
+}
+
 
 /*banner*/
 .met-banner .carousel-inner.met-banner-mh{background:#ddd;min-height:300px}
@@ -169,7 +181,7 @@ body.met-navfixed{padding-top:60px}
 
 /*首页新闻区块*/
 .met-index-news{margin:50px 0}
-.met-index-news .list-group{border-radius:5px;-webkit-box-shadow:0 1px 10px rgba(0,0,0,.15);box-shadow:0 1px 10px rgba(0,0,0,.15);padding:20px 15px}
+.met-index-news .list-group{-webkit-box-shadow:0 1px 10px rgba(0,0,0,.15);box-shadow:0 1px 10px rgba(0,0,0,.15);padding:20px 15px}
 .met-index-news .list-group-item{background: none;padding-left:0;padding-right:0;border:none}
 .met-index-news .list-group-item.active{background:transparent;border-bottom:1px solid $first_color$}
 .met-index-news .list-group-item.active h4{font-size:20px;color:$first_color$}

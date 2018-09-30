@@ -48,11 +48,28 @@
                                 <a href="{$m.url}" class="pull-xs-right">{$lang.home_news_more}</a>
                             </li>
                                 <a href="corpnews/" title="">
-                                <img src="upload/image/corpnews.png" alt="" style="height:170px;width: 100%; border-radius: 5px;">
+                                <img src="upload/image/corpnews.png" alt="" style="height:210px;width: 100%; border-radius: 5px;">
                                 </a>
                         </tag>
                     </ul>
                 </div>
+            </div>
+            <div class="index_table">
+                <table style="" width="100%" cellspacing="0" cellpadding="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td rowspan="2" width="50%"><a href="business/"><img src="templates/wtf/images/index_a01.png" width="100%"></a></td>
+                            <td width="50%"><a href="business/"><img src="templates/wtf/images/index_a02.png" width="100%"></a></td>
+                        </tr>
+                        <tr>
+                            <td width="50%"><a href="product/"><img src="templates/wtf/images/index_a03.png" width="100%"></a></td>
+                        </tr>
+                        <tr>
+                            <td width="50%"><a href="business/"><img src="templates/wtf/images/index_a04.png" width="100%"></a></td>
+                            <td width="50%"><a href="business/"><img src="templates/wtf/images/index_a05.png" width="100%"></a></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
