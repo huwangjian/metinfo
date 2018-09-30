@@ -18,8 +18,7 @@
 			<span>{$v.updatetime}</span>
 			<span>{$v.issue}</span>
 			<span>
-				<i class="icon wb-eye m-r-5 font-weight-300" aria-hidden="true"></i>
-				{$v.hits}
+				<i class="icon wb-eye m-r-5 font-weight-300" aria-hidden="true"></i>{$v.hits}
 			</span>
 		</p>
 	</div>

@@ -5,7 +5,7 @@
         <div class="row">
             <tag action='img.list' num="$c['met_img_list']"></tag>
             <if value="$sub">
-            <ul class="blocks-100 blocks-md-2 blocks-lg-4 blocks-xxl-4  no-space met-pager-ajax imagesize met-img-list" data-scale='{$c.met_imgs_y}x{$c.met_imgs_x}' m-id='noset'>
+            <ul class="blocks-100 blocks-md-2 blocks-lg-5 blocks-xxl-5  no-space met-pager-ajax imagesize met-img-list" data-scale='{$c.met_imgs_y}x{$c.met_imgs_x}' m-id='noset'>
                 <include file='ajax/img'/>
             </ul>
             <else/>
