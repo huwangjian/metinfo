@@ -193,7 +193,7 @@ body.met-navfixed{padding-top:60px}
 /*底部版权信息*/
 .met-foot-info{padding:20px 0px;color:#aaa;height:auto;line-height:1.8;box-shadow:0 -1px 0px rgba(0,0,0,.05)}
 .met-foot-info p{margin-bottom:0px}
-.met-foot-info a{color:$first_color$}
+.met-foot-info a{color:#aaa}
 
 /*多语言*/
 .met-langlist img{margin-right:2px;position:relative;top:-1px}

@@ -47,14 +47,9 @@
                                 <h4 class="pull-xs-left m-y-0">{$m.name}</h4>
                                 <a href="{$m.url}" class="pull-xs-right">{$lang.home_news_more}</a>
                             </li>
-                            <tag action="list" cid="$m['id']" num="$lang['home_news_num']" type="$lang['home_news_type']">
-                                <li class="list-group-item news-li clearfix">
-                                    <span>{$v.updatetime}</span>
-                                    <a href="{$v.url}" title="{$v.title}" target="{$lang.met_listurlblank}">
-                                        {$v.title}
-                                    </a>
-                                </li>
-                            </tag>
+                                <a href="corpnews/" title="">
+                                <img src="upload/image/corpnews.png" alt="" style="height:170px;width: 100%; border-radius: 5px;">
+                                </a>
                         </tag>
                     </ul>
                 </div>
