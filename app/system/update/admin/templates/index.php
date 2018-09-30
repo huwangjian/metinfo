@@ -25,12 +25,6 @@ var ownlangtxt = {
 <div class="v52fmbx" data-metcms_v="{$_M[config][metcms_v]}" data-patch="{$_M[config][met_patch]}">
 	<h3 class="v52fmbx_hr">{$_M['word']['program_information']}</h3>
 	<dl>
-		<dt>{$_M['word']['upfiletips43']}</dt>
-		<dd>
-			<span class="newpatch" data-auto="{$data_auto}">{$_M['word']['get_in']}...<span class='metcms_upload_download'></span></span>
-		</dd>
-	</dl>
-	<dl>
 		<dt>{$_M['word']['upfiletips39']}</dt>
 		<dd>
 			{$metinfo_info}&nbsp;&nbsp;&nbsp;&nbsp;
@@ -40,7 +34,7 @@ var ownlangtxt = {
 	<dl>
 		<dt>{$_M['word']['current_version']}</dt>
 		<dd>
-			{$metinfo_ver}
+			{$metinfo_ver} <span style="color:red;">没事请勿升级，谢谢...</span>
 		</dd>
 	</dl>
 	<dl {$met_agents_display}>
