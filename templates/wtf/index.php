@@ -47,7 +47,7 @@
                                 <h4 class="pull-xs-left m-y-0">{$m.name}</h4>
                                 <a href="{$m.url}" class="pull-xs-right">{$lang.home_news_more}</a>
                             </li>
-                                <a href="corpnews/" title="">
+                                <a href="corpnews/" id="corpnews">
                                 <img src="upload/image/corpnews.png" alt="" style="height:210px;width: 100%; border-radius: 5px;">
                                 </a>
                         </tag>

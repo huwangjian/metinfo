@@ -117,6 +117,8 @@ body.met-navfixed{padding-top:60px}
   .met-logo img{max-height: 50px}
 }
 .navbar-shadow{box-shadow:0px 1px 3px rgba(0,0,0,0.1)}
+
+/*mine tweak*/
 .index_table {
   width: auto;
   height: auto;
@@ -125,7 +127,13 @@ body.met-navfixed{padding-top:60px}
   -webkit-box-shadow:0 1px 10px rgba(0,0,0,.15);
   box-shadow:0 1px 10px rgba(0,0,0,.15);
 }
-
+.index_table a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.35);
+}
+#corpnews {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.35);
+}
 
 /*banner*/
 .met-banner .carousel-inner.met-banner-mh{background:#ddd;min-height:300px}
