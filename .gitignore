@@ -2,3 +2,5 @@ cache/
 templates/metv6/cache/
 upload/
 admin/databack
+404.html
+sitemap.xml
